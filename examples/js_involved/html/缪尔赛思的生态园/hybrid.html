@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0%;
+            flex-direction: row;
+            display: flex;
+            background-color:rgb(170, 255, 0);
+        }
+        .header .nav ul{
+            position: relative;
+            width:300px;
+            left: calc(50% - 150px);
+            flex-direction: row;
+            display: flex;
+        }
+        .header .nav ul li{
+            margin: 10px;
+        }
+        .user-info{
+            position:absolute;
+            align-items: center;
+            text-align: center;
+            height: 80px;
+            width: 80px;
+            right: 0%;
+            font-size: 8px;
+        }
+        .avatar{
+            height: 40px;
+            width: 40px;
+        }
+        .search-box{
+            position: fixed;
+            top: 90px;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 120px;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            border: 1px solid black;
+        }
+        .content tr{
+            width: 100%;
+            height:max-content;
+            position: relative;
+            flex-direction: row;
+            display: flex;
+        }
+        .content tr td{
+            width: 100%;
+            position: relative;
+            flex-direction: row;
+            display: flex;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .content img{
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="user-info">
+            <img class="avatar">
+            <p class="nickname">当前用户:</p>
+            <a class="quit" href="loginPage.html">退出登录</a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="loginPage.html">登录</a></li>
+                <li><a href="ecozoo.html">生态园</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="search-box">
+        <span>颜色:</span>
+        <input id="search-color" type="text">
+        <span>名称:</span>
+        <input id="search-name" type="text">
+    </div>
+    <table class="content">
+
+    </table>
+    <script src="
+https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+"></script>
+    <script>
+        const flowers = JSON.parse(localStorage.getItem("picked"))
+        const name = localStorage.getItem("name")
+        const avatar = localStorage.getItem("avatar")
+        if (name == undefined){
+            location.href = "loginPage.html"
+            alert("您还未登录")
+        }
+        const nickname = document.querySelector(".nickname")
+        const img = document.querySelector(".avatar")
+        nickname.innerText = `当前用户:${name}`
+        img.src = avatar
+        const content = document.querySelector(".content")
+        function update(color, flowerName){
+            var str = "<table>"
+            for (i of flowers.filter((it)=>it.name.substring(0,flowerName.length)==flowerName&&it.attributes["颜色"].substring(0,color.length)==color)){
+                str += `<tr><td><img src="${i.url}"></td><td><p>${i.name}</p></td><td><ul>`
+                for (j of Object.entries(i.attributes)){
+                    str += `<li>${j[0]}:${j[1]}</li>`
+                }
+                str += "</ul></td></tr>"
+            }
+            str += "</table>"
+            content.innerHTML = str
+        }
+        update("","")
+        document.querySelector(".search-box").addEventListener("input", _.debounce(function(e){
+            const searchName = document.querySelector("#search-name")
+            const searchColor = document.querySelector("#search-color")
+            update(searchColor.value, searchName.value)
+        },1000))
+    </script>
+</body>
+</html>

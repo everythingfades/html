@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>跳转到一个神奇的地方去</button>
+    <div style="display: none;">
+        <p>在<i>5</i>秒内正在前往百度</p>
+    </div>
+    <script>
+        const button = document.querySelector("button")
+        button.addEventListener("click",function(){
+            document.querySelector("div").style.display = "flex"
+            const timer = setInterval(function(){
+                const i = document.querySelector("i")
+                var number = parseInt(i.innerText)
+                number -= 1
+                i.innerText = number
+                if (number == 0){
+                    clearInterval(timer)
+                    location.href = "https://www.baidu.com"
+                }
+            },1000)
+        })
+    </script>
+</body>
+</html>

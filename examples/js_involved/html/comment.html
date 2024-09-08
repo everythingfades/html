@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页</title>
+    <style>
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        textarea {
+            height: 100px;
+            width: 500px;
+            align-content: center;
+            font-size: 15px;
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            border: 1px solid #6a6a6a;
+            border-radius: 4px;
+            resize: none;
+            outline: none;
+        }
+        #upload {
+            position: relative;
+            width: 75px;
+            height:100px;
+            background-color: aqua;
+            color: white;
+            margin-left: 10px;
+            border: none;
+        }
+        #wordcount {
+            margin-right: 80px;
+            opacity: 1;
+            margin-top: 5px;
+        }
+        .avatar {
+            width:48px;
+            height:48px;
+            border-radius: 50%;
+            background: url(https://i0.hdslb.com/bfs/face/member/noface.jpg@160w_160h_1c_1s_!web-avatar-comment.avif);
+            margin-right: 20px;
+            display: block;
+        }
+        .time {
+            font-size: 12px;
+            font-family: sans-serif;
+            color: #6a6a6a;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <textarea type="text" placeholder="发评论"></textarea>
+        <button id="upload">发布</button>
+    </div>
+    <div class="wrapper"><span id="wordcount">0/200字</span></div>
+    <div>
+        <div class="list">
+            <div id="template" style="display:none;">
+                <i class="avatar"></i> 
+                <div class="info">
+                    <p class="name">whoami</p >
+                    <p class="text">大家都辛苦啦，感谢各位大大的努力，能圆满完成真是太好了[笑哭][支持]</p >
+                    <p class="time">2022-10-10 20:29:21</p >
+                </div> 
+            </div> 
+        </div>
+    </div>
+    <script>
+        const input = document.querySelector("textarea")
+        const button = document.querySelector("#upload")
+        const wordcount = document.querySelector("#wordcount")
+        const list = document.querySelector(".list")
+        const template = document.querySelector("#template")
+        const name = document.querySelector("#template .info .name")
+        const text = document.querySelector("#template .info .text")
+        const time = document.querySelector("#template .info .time")
+        var data = []
+        function upload(inputText){
+            if(inputText.trim()){
+                data.push(inputText)
+                text.innerText = inputText
+                var myDate = new Date()
+                var mytime = myDate.toLocaleString()
+                time.innerText = mytime
+                list.innerHTML += template.innerHTML
+            }
+            else{
+                alert("评论不能为空")
+            }
+            input.value = ""
+        }
+        input.addEventListener("keyup", function(e){
+            if(e.key === "Enter"){
+                console.log(input.value)
+                upload(input.value)
+            }
+        })
+        input.addEventListener("input",function(){
+            wordcount.innerText = `${input.value.trim().length}/200字`
+        })
+        button.addEventListener("click", function(){
+            upload(input.value)
+        })
+    </script>
+</body>
+</html>

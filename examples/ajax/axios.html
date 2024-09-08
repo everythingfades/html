@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        div = document.querySelector("div")
+        axios({
+            url:"http://hmajax.itheima.net/api/province"
+        }).then((result) => {
+            div.innerHTML += "<ul>"
+            for (i of result.data.list){
+                div.innerHTML += `<li>${i}</li>`
+            }
+            div.innerHTML += "</ul>"
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    img{
+        height: 200px;
+        width: 200px;
+    }
+    .item {
+        height: 200px;
+        width: 100%;
+        background-color: aquamarine;
+    }
+    .item1{
+        height: 200px;
+        width: 200px;
+    }
+    .item-1-father:hover .item1{
+        transition: all 1s;
+        transform: translate(500px);
+    }
+    .item2{
+        height: 200px;
+        width: 200px;
+    }
+    .item-2-father:hover .item2{
+        transition: all 1s;
+        transform: rotate(360deg);
+    }
+    .item3{
+        height: 200px;
+        width: 200px;
+    }
+    .item-3-father:hover .item3{
+        transition: all 1s;
+        transform: translate(500px) rotate(360deg);
+    }
+    .item4{
+        height: 200px;
+        width: 200px;
+    }
+    .item-4-father:hover .item4{
+        transition: all 1s;
+        transform: scale(0.5);
+    }
+    .item5{
+        height: 200px;
+        width: 200px;
+    }
+    .item-5-father{
+        background: linear-gradient(
+            to right,
+            aquamarine 40%,
+            violet 60%
+        );
+    }
+    .item6{
+        height: 200px;
+        width: 200px;
+    }
+    .item-6-father{
+        background: radial-gradient(
+            circle at center,
+            aquamarine 40%,
+            violet 60%
+        );
+    }
+    .item7{
+        height: 200px;
+        width: 200px;
+        perspective: 800px;
+    }
+    .item-7-father:hover .item7{
+        transition: all 1s;
+        transform: translate3d(100px, 100px, 200px);
+    }
+    .cube {
+        width: 200px;
+        height: 200px;
+        margin: 100px auto;
+        position: relative;
+        transition: all 2s;
+        transform-style: preserve-3d;
+        transform: rotateY(30deg) rotateX(30deg); 
+
+    }
+    .cube:hover {
+        transform: rotateY(210deg) rotateX(210deg); 
+
+    }
+    .cube div{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 200px;
+    }
+    .cube .front {
+        background-color: red;
+        transform: translateZ(100px);
+    }
+
+    .cube .back {
+        background-color: blue;
+        transform: translateZ(-100px);
+    }
+    .cube .up {
+        background-color: green;
+        transform: translateY(100px) rotateX(90deg);
+    }
+    .cube .down {
+        background-color: yellow;
+        transform: translateY(-100px) rotateX(-90deg);
+    }
+    .cube .left {
+        background-color: aquamarine;
+        transform: translateX(100px) rotateY(90deg);
+    }
+    .cube .right {
+        background-color: violet;
+        transform: translateX(-100px) rotateY(-90deg);
+    }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h3>平移</h3>
+        <div class="item-1-father item">
+            <div class="item1">
+                <img src="https://th.bing.com/th/id/OIP.hz3AZ3kt57v49UNvReQtMAHaHa?w=195&h=195&c=7&r=0&o=5&dpr=2&pid=1.7" alt="饭">
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>旋转</h3>
+        <div class="item-2-father item">
+            <div class="item2">
+                <img src="https://th.bing.com/th/id/OIP.hz3AZ3kt57v49UNvReQtMAHaHa?w=195&h=195&c=7&r=0&o=5&dpr=2&pid=1.7" alt="饭">
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>复合</h3>
+        <div class="item-3-father item">
+            <div class="item3">
+                <img src="https://th.bing.com/th/id/OIP.hz3AZ3kt57v49UNvReQtMAHaHa?w=195&h=195&c=7&r=0&o=5&dpr=2&pid=1.7" alt="饭">
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>缩放</h3>
+        <div class="item-4-father item">
+            <div class="item4">
+                <img src="https://th.bing.com/th/id/OIP.hz3AZ3kt57v49UNvReQtMAHaHa?w=195&h=195&c=7&r=0&o=5&dpr=2&pid=1.7" alt="饭">
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>背景线性渐变</h3>
+        <div class="item-5-father item">
+            <div class="item5">
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>背景径向渐变</h3>
+        <div class="item-6-father item">
+            <div class="item6">
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>立体平移</h3>
+        <div class="item-7-father item">
+            <div class="item7">
+                <img src="https://th.bing.com/th/id/OIP.hz3AZ3kt57v49UNvReQtMAHaHa?w=195&h=195&c=7&r=0&o=5&dpr=2&pid=1.7" alt="饭">
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>立体呈现</h3>
+        <div class="cube-container">
+            <div class="cube">
+                <div class="front">1</div>
+                <div class="right">2</div>
+                <div class="up">3</div>
+                <div class="down">4</div>
+                <div class="left">5</div>
+                <div class="back">6</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

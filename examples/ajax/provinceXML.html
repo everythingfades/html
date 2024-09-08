@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <span>输入</span>
+        <input type="text">
+        <button>点击</button>
+        <p></p>
+    </div>
+    
+    <script>
+        const xhr = new XMLHttpRequest()
+        // xhr.addEventListener("loadend",()=>{
+        //     console.log(xhr.response)
+        //     const data = JSON.parse(xhr.response)
+        //     document.querySelector(".content p").innerText = data.list
+        // })
+
+
+        
+        // document.querySelector(".content button").addEventListener("click",()=>{
+        //     pname = document.querySelector(".content input").value
+        //     xhr.open("GET",`https://hmajax.itheima.net/api/city?pname=${pname}`)
+        //     xhr.send()
+        //     xhr.onload = ()=>{
+        //         console.log(xhr.response)
+        //         const data = JSON.parse(xhr.response)
+        //         document.querySelector(".content p").innerText = data.list
+        //     }
+        // })
+
+        document.querySelector(".content button").addEventListener("click",()=>{
+            var form = new FormData()
+            pname = document.querySelector(".content input").value
+            form.append("pname",pname)
+            xhr.open("POST",`https://hmajax.itheima.net/api/data`)
+            xhr.send(form)
+            console.log(form)
+            xhr.onload = ()=>{
+                console.log(xhr.response)
+                const data = JSON.parse(xhr.response)
+                document.querySelector(".content p").innerText = Object.keys(data.data)
+            }
+        })
+    </script>
+</body>
+</html>

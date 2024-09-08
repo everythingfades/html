@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>网页</title>
+        <style>
+            #example{
+                width:25px;
+                height:25px;
+                background-color:red;
+            }
+            #example:hover{
+                animation: rainbow 3s linear 0s infinite alternate running;
+            }
+            #breath{
+                width:200px;
+                height:200px;
+                background-color:red;
+            }
+            #breath:hover{
+                animation: breath 2700ms ease-in-out 0s infinite alternate running;
+            }
+            @keyframes rainbow{
+                0%{
+                    height:25px;
+                    width:25px;
+                    background-color:red;
+                }
+                16%{
+                    height:50px;
+                    width:50px;
+                    background-color:orange;
+                }
+                33%{
+                    height:75px;
+                    width:75px;
+                    background-color:yellow
+                }
+                50%{
+                    height:100px;
+                    width:100px;
+                    background-color:green
+                }
+                67%{
+                    height:125px;
+                    width:125px;
+                    background-color:aquamarine;
+                }
+                83%{
+                    height:150px;
+                    width:150px;
+                    background-color:blue
+                }
+                100%{
+                    height:175px;
+                    width:175px;
+                    background-color:purple;
+                }
+            }
+            @keyframes breath{
+                0%{
+                    opacity: 0.2;
+                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+                }
+                50%{
+                    opacity: 0.5;
+                    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.76)
+                }
+                100%{
+                    opacity: 1;
+                    box-shadow: 0 1px 2px rgba(18, 190, 84, 0.3)
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="example"></div>
+        <hr>
+        <div id="breath"></div>
+    </body>
+</html>

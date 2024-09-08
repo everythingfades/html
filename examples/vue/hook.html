@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div><h3>计数器</h3></div>
+        <div>
+            <button @click="minus">-</button>
+            <span v-html="num"></span>
+            <button @click="add">+</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                num: 100
+            },
+            methods:{
+                add(){
+                    this.num++
+                },
+                minus(){
+                    this.num--
+                },
+            },
+            beforeCreate(){
+                alert(`beforeCreate 响应式数据准备好之前 ${this.num}`)
+                // 这里拿不到数据
+            },
+            created(){
+                alert(`created 响应式数据准备好了 ${this.num}`)
+                // 这里初始化
+            },
+            beforeMount(){
+                alert(`beforeMount 挂载之前 ${this.num}`)
+                // 这里没有vue的视图
+            },
+            mounted(){
+                alert(`mount 挂载之后 ${this.num}`)
+                // 这里才开始出现vue的视图,可以操作DOM
+            },
+            beforeUpdate(){
+                alert(`beforeUpdate 数据更新之前 ${this.num}`)
+            },
+            updated(){
+                alert(`update 数据更新之后 ${this.num}`)
+            },
+            beforeDestroy(){
+                alert("beforeDestory VUE实例销毁之前")
+            },
+            destroyed(){
+                alert("destory VUE实例销毁之后")
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        .search-box{
+            align-content: center;
+            background-color: white;
+            color: rgb(131, 131, 131);
+            padding: 0 10px;
+            margin: 10px;
+            width: 500px;
+            height: 50px;
+            font-size: 15px;
+            font-family: sans-serif;
+            text-align: left;
+            position: relative;
+        }
+        .search-box input{
+            align-content: center;
+            background-color: white;
+            color: rgb(131, 131, 131);
+            margin: 10px;
+            width: 500px;
+            height: 50px;
+            font-size: 15px;
+            font-family: sans-serif;
+            text-align: left;
+            outline: none;
+        }
+        .search-box .search{
+            border: 1px solid aquamarine;
+        }
+        .list{
+            position: absolute;
+            display: none;
+            text-align: left;
+            font-family: sans-serif;
+            font-size: 12px;
+            width: 500px;
+            border: 1px solid aquamarine;
+            border-top: 0;
+        }
+        .list a{
+            display: block;
+            text-align: left;
+            font-family: sans-serif;
+            font-size: 12px;
+            color: #424242;
+            padding: 6px 15px;
+        }
+        .list a:hover{
+            display: block;
+            text-align: left;
+            font-family: sans-serif;
+            font-size: 12px;
+            color: red;
+            padding: 6px 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-box">
+        <input type="search" placeholder="我知道你要敲什么">
+        <ul class="list">
+            <li><a href="https://prts.wiki/w/%E9%BB%8D">黍</li>
+            <li><a href="https://prts.wiki/w/%E9%87%8D%E5%B2%B3">重岳</li>
+            <li><a href="https://prts.wiki/w/%E4%BB%A4">令</li>
+            <li><a href="https://prts.wiki/w/%E5%A4%95">夕</li>
+            <li><a href="https://prts.wiki/w/%E5%B9%B4">年</li>
+            <li><a href="https://prts.wiki/w/%E8%83%BD%E5%A4%A9%E4%BD%BF">能天使</li>
+            <li><a href="https://prts.wiki/w/%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF">德克萨斯</li>
+            <li><a href="https://prts.wiki/w/%E8%8E%AB%E6%96%AF%E6%8F%90%E9%A9%AC">莫斯提马</li>
+            <li><a href="https://prts.wiki/w/%E6%8B%89%E6%99%AE%E5%85%B0%E5%BE%B7">拉普兰德</li>
+        </ul>
+    </div>
+    <script>
+        const search = document.querySelector('[type=search]')
+        const ul = document.querySelector('.list')
+        search.addEventListener("focus", function(){
+            ul.style.display="block"
+            search.classList.add('search')
+        })
+        search.addEventListener("blur", function(){
+            ul.style.display="none"
+            search.classList.remove('search')
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: fit-content;
+            width: max-content;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        table td {
+            border: 2px solid black;
+            border-radius: 4px;
+            margin: 0px;
+            height: 100px
+        }
+        table tr {
+            border-collapse: collapse;
+        }
+        table{
+            border: 1px solid black;
+            height: 100px;
+            width: 100%;
+        }
+        .table-head{
+            background-color: #dfdfdf;
+            font-weight: bold;
+        }
+        .first-column-in-branch{
+            height: auto;
+            width: fit-content;
+        }
+        #branch-img{
+            background-color: black;
+        }
+        .content{
+            border: 2px solid aquamarine;
+            background-color: aqua;
+            border-radius: 4px;
+            position: fixed;
+            top: 0px;
+            align-content: center;
+            align-items: center;
+            height: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .content ul li{
+            display: inline;
+            color: black;
+            font-size: 10px;
+            align-items: center;
+            background-color: greenyellow;
+            border: 2%;
+        }
+        .content ul .active{
+            color: red;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        a{
+            border: 5px
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul>
+            <li class="active" data-id="1">干员名称</li>
+            <li data-id="2">大头照</li>
+            <li data-id="3">分支信息</li>
+            <li data-id="4">属性</li>
+            <li data-id="5">天赋</li>
+        </ul>
+    </div>
+    <div style="height: 125px;">
+    </div>
+    <div class="info">
+        <h2>干员名称:能天使</h2>
+    </div>
+    <div class="info">
+        <a href="https://prts.wiki/w/%E8%83%BD%E5%A4%A9%E4%BD%BF"><img src="https://prts.wiki/images/a/ad/%E5%A4%B4%E5%83%8F_%E8%83%BD%E5%A4%A9%E4%BD%BF.png"></a>
+    </div>
+    <div class="info">
+        <h2>分支信息</h2>
+        <table>
+            <tr class="table-head">
+                <td class="first-column-in-branch"><p>分支</p></td>
+                <td class="second-column-in-branch"><p>描述</p></td>
+            </tr>
+            <tr>
+                <td class="first-column-in-branch">
+                    <img id="branch-img" src="https://prts.wiki/images/1/1f/%E8%81%8C%E4%B8%9A%E5%88%86%E6%94%AF%E5%9B%BE%E6%A0%87_%E9%80%9F%E5%B0%84%E6%89%8B.png">
+                    <br>
+                    <p>速射手</p>
+                </td>
+                <td><p>优先攻击空中单位</p></td>
+            </tr>
+            <tr class="table-head">
+                <td rowspan="2">分支信息</td>
+            </tr>
+            <br>
+            <tr>
+                <td rowspan="2"><li id="branch-info">可对空</li></td>
+            </tr>
+        </table>
+    </div>
+    <div class="info">
+        <h2>属性</h2>
+        <h3>基本属性</h3>
+        <table>
+            <tr>
+                <td class="table-head">再部署时间</td>
+                <td>70s</td>
+                <td class="table-head">初始步数费用</td>
+                <td>12->14</td>
+            </tr>
+            <tr>
+                <td class="table-head">阻挡数</td>
+                <td>1</td>
+                <td class="table-head">攻击间隔</td>
+                <td>1.0s</td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td></td>
+                <td class="table-head">精英0 1级</td>
+                <td class="table-head">精英0 满级</td>
+                <td class="table-head">精英1 满级</td>
+                <td class="table-head">精英2 满级</td>
+                <td class="table-head">信赖加成上限</td>
+            </tr>
+            <tr>
+                <td class="table-head">生命上限</td>
+                <td>711</td>
+                <td>1016</td>
+                <td>1338</td>
+                <td>1673</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="table-head">攻击</td>
+                <td>183</td>
+                <td>305</td>
+                <td>437</td>
+                <td>540</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td class="table-head">防御</td>
+                <td>57</td>
+                <td>95</td>
+                <td>136</td>
+                <td>161</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="table-head">法术抗性</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </table>
+    </div>
+    <div class="info">
+        <h2>天赋</h2>
+        <table>
+            <tr>
+                <td class="table-head">天赋</td>
+                <td class="table-head">名称</td>
+                <td class="table-head">条件</td>
+                <td class="table-head">描述</td>
+            </tr>
+            <tr>
+                <td rowspan="5" class="table-head">第一天赋</td>
+                <td rowspan="5">快速弹夹</td>
+                <td>精英1</td>
+                <td>攻击速度+6</td>
+            </tr>
+            <tr>
+                <td>精英1 潜能3</td>
+                <td>攻击速度+9</td>
+            </tr>
+            <tr>
+                <td>精英2</td>
+                <td>攻击速度+12</td>
+            </tr>
+            <tr>
+                <td>精英2</td>
+                <td>攻击速度+12</td>
+            </tr>
+            <tr>
+                <td>精英2 潜能3</td>
+                <td>攻击速度+15</td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="table-head">第二天赋</td>
+                <td rowspan="2">天使的祝福</td>
+                <td>精英2</td>
+                <td>攻击力+6%,生命上限+10%.置入战场后这个效果同样会赋予给一名随机友方单位</td>
+            </tr>
+            <tr>
+                <td>精英2 潜能6</td>
+                <td>攻击力+8%,生命上限+13%.置入战场后这个效果同样会赋予给一名随机友方单位</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="table-head">备注</td>
+            </tr>
+            <tr>
+                <td colspan="4">※能天使部署时，若场上没有其他可选的友方干员，则第二天赋将应用于自身和之后被部署的友方干员，直至达到最大额外生效数量。</td>
+            </tr>
+        </table>
+    </div>
+    <button>回到顶端</button>
+    <script>
+        const divs = document.querySelectorAll("div")
+        const height = []
+        const lis = document.querySelectorAll(".content ul li")
+        const content = document.querySelector(".content")
+        var temp = 0
+        for (let i = 0; i < divs.length; i++){
+            if (divs[i].className != "info"){
+                continue
+            }
+            height.push(divs[i].offsetTop)
+        }
+        console.log(height)
+        function checkBetween(){
+            let length = height.length
+            let a = document.documentElement.scrollTop
+            if (a < height[0]){
+                return 0
+            }
+            if (a > height[height.length-1]){
+                return height.length - 1
+            }
+            for (let i = 0; i < length - 1; i++){
+                if (a <= height[i+1] && a > height[i]){
+                    return i
+                }
+            }
+        }
+        function changeTo(index){
+            if (index < height.length){
+                content.style.display = "flex"
+                console.log("0000",index)
+                document.querySelector(".content ul .active").classList.remove("active")
+                document.querySelector(`.content ul li:nth-child(${parseInt(index)})`).classList.add("active")
+            }
+        }
+        const button = document.querySelector("button")
+        button.addEventListener("click", function(){
+            window.scrollTo(0,0)
+        })
+        document.addEventListener("scroll", function(){
+            let scrollLength = document.documentElement.scrollTop
+            let index = checkBetween()
+            changeTo(index+1)
+        })
+        content.addEventListener("click", function(e){
+            console.log(height[e.target.dataset.id])
+            console.log(divs[e.target.dataset.id])
+            window.scrollTo(0,divs[parseInt(e.target.dataset.id) + 1].offsetTop - content.clientHeight)
+            changeTo(e.target.dataset.id)
+        })
+    </script>
+</body>
+</html>

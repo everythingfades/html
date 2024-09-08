@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>网页</title>
+        <meta charset="UTF-8">
+        <style>
+            .container{
+                width:500px;
+                height:500px;
+                background-color: gray;
+            }
+            .box1{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .box2{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .box3{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            
+            .flex-container{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+            }
+            .flex-box1{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .flex-box2{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .flex-box3{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            
+            .flex-container-column{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+                flex-direction: column
+            }
+            .flex-box1-column{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .flex-box2-column{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .flex-box3-column{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            .flex-container-reverse-row{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+                flex-direction:row-reverse;
+            }
+            .flex-box1-reverse-row{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .flex-box2-reverse-row{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .flex-box3-reverse-row{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            .flex-container-column-reverse{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+                flex-direction:column-reverse;
+            }
+            .flex-box1-column-reverse{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .flex-box2-column-reverse{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .flex-box3-column-reverse{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            .flex-container-flex-end{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+                justify-content:flex-end;
+            }
+            .flex-box1-flex-end{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .flex-box2-flex-end{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .flex-box3-flex-end{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            .flex-container-center{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+                justify-content:center;
+            }
+            .flex-box1-center{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .flex-box2-center{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .flex-box3-center{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            .flex-container-center-center{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+            .flex-box1-center-center{
+                width:100px;
+                height:100px;
+                background-color:red;
+            }
+            .flex-box2-center-center{
+                width:100px;
+                height:100px;
+                background-color:green;
+            }
+            .flex-box3-center-center{
+                width:100px;
+                height:100px;
+                background-color:blue;
+            }
+            .flex-container-05{
+                width:500px;
+                height:500px;
+                background-color: gray;
+                display:flex;
+            }
+            .flex-box1-05{
+                width:100px;
+                height:100px;
+                background-color:red;
+                flex-grow:3
+            }
+            .flex-box2-05{
+                width:100px;
+                height:100px;
+                background-color:green;
+                flex-grow:2
+            }
+            .flex-box3-05{
+                width:100px;
+                height:100px;
+                background-color:blue;
+                flex-grow:0
+            }
+        </style>
+    </head>
+    <body>
+        <p>正常</p>
+        <div class="container">
+            <div class="box1">文本1</div>
+            <div class="box2">文本2</div>
+            <div class="box3">文本3</div>
+        </div>
+        <hr>
+        <p>flex</p>
+        <div class="flex-container">
+            <div class="flex-box1">文本1</div>
+            <div class="flex-box2">文本2</div>
+            <div class="flex-box3">文本3</div>
+        </div>
+        <hr>
+        <p>flex-direction:column</p>
+        <div class="flex-container-column">
+            <div class="flex-box1-column">文本1</div>
+            <div class="flex-box2-column">文本2</div>
+            <div class="flex-box3-column">文本3</div>
+        </div>
+        <hr>
+        <p>flex-direction:row-reverse</p>
+        <div class="flex-container-reverse-row">
+            <div class="flex-box1-reverse-row">文本1</div>
+            <div class="flex-box2-reverse-row">文本2</div>
+            <div class="flex-box3-reverse-row">文本3</div>
+        </div>
+        <hr>
+        <p>flex-direction:column-reverse</p>
+        <div class="flex-container-column-reverse">
+            <div class="flex-box1-column-reverse">文本1</div>
+            <div class="flex-box2-column-reverse">文本2</div>
+            <div class="flex-box3-column-reverse">文本3</div>
+        </div>
+        <hr>
+        <p>justify-content:flex-end</p>
+        <div class="flex-container-flex-end">
+            <div class="flex-box1-flex-end">文本1</div>
+            <div class="flex-box2-flex-end">文本2</div>
+            <div class="flex-box3-flex-end">文本3</div>
+        </div>
+        <hr>
+        <p>justify-content:center</p>
+        <div class="flex-container-center">
+            <div class="flex-box1-center">文本1</div>
+            <div class="flex-box2-center">文本2</div>
+            <div class="flex-box3-center">文本3</div>
+        </div>
+        
+        <hr>
+        <p>justify-content:center,align-items:center</p>
+        <div class="flex-container-center-center">
+            <div class="flex-box1-center-center">文本1</div>
+            <div class="flex-box2-center-center">文本2</div>
+            <div class="flex-box3-center-center">文本3</div>
+        </div>
+        
+        <hr>
+        <p>flex-grow:0.5</p>
+        <div class="flex-container-05">
+            <div class="flex-box1-05">文本1</div>
+            <div class="flex-box2-05">文本2</div>
+            <div class="flex-box3-05">文本3</div>
+        </div>
+    </body>
+</html>

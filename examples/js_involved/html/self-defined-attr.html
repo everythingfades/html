@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 3px solid violet;
+        }
+        .nav{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            border: 3px solid blue;
+            padding: 15px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div data-id="1" data-something="A">1</div>
+    <div data-id="2" data-something="B">2</div>
+    <div data-id="3" data-something="C">3</div>
+    <div data-id="4" data-something="D">4</div>
+    <div data-id="5" data-something="E">5</div>
+    <script>
+        const one = document.querySelector("div")
+        console.log(one.dataset)
+        console.log(one.dataset.something)
+    </script>
+</body>
+</html>

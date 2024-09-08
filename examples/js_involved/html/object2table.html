@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+    <style>
+        th {
+            border: 3px solid orange;
+            border-collapse: collapse;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>列表</caption>
+        <tr>
+            <th>属性1</th>
+            <th>属性2</th>
+            <th>属性3</th>
+            <th>属性4</th>
+        </tr>
+        <script>
+            let data = [
+                {param1:"a",param2:"A",param3:"1",parmas4:"alpha"},
+                {param1:"b",param2:"B",param3:"2",parmas4:"beta"},
+                {param1:"c",param2:"C",param3:"3",parmas4:"gamma"},
+                {param1:"d",param2:"D",param3:"4",parmas4:"zeta"},
+            ]
+            for (let i = 0; i < data.length; i++){
+                document.write("<tr>")
+                for (j in data[i]){
+                    document.write(`<th>${data[i][j]}</th>`)
+                }
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+</body>
+</html>

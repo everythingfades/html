@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>网页</title>
+        <meta charset="UTF-8">
+        <style>
+            #example{
+                width: 200px;
+                height: 200px;
+                background-color: red;
+            }
+            #example-relative{
+                width: 200px;
+                height: 200px;
+                background-color: aqua;
+                position:relative;
+                left: 200px;
+                top: 100px;
+            }
+            #example-absolute{
+                width: 200px;
+                height: 200px;
+                background-color: violet;
+                position:absolute;
+                left: 200px;
+                top: 100px;
+            }
+            #example-fixed{
+                width: 200px;
+                height: 200px;
+                background-color: violet;
+                position:fixed;
+                right:100px;
+                bottom: 100px;
+            }
+            #example-absolute-position{
+                width: 200px;
+                height: 200px;
+                background-color: aqua;
+                position:relative;
+            }
+            #example-absolute-position1{
+                width: 200px;
+                height: 200px;
+                background-color: aqua;
+                position:absolute;
+            }
+            #example-absolute-position2{
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                position:absolute;
+                left: 10px;
+                bottom: 10px;
+            }
+            #example-absolute-position3{
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                position:absolute;
+                right: 10px;
+                bottom: 10px;
+                clear:both;
+            }
+            #example-relative-position4{
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+                position:relative;
+                left: 100px;
+                top: 40px;
+                clear:both;
+            }
+            #example-absolute-position1-z{
+                width: 200px;
+                height: 200px;
+                background-color: lime;
+                position:absolute;
+                right: 30px;
+                bottom: 40px;
+                clear:both;
+                z-index:25;
+            }
+            #example-absolute-position5{
+                width: 200px;
+                height: 200px;
+                background-color: orange;
+                position:absolute;
+                right: 40px;
+                bottom: 30px;
+                clear:both;
+                z-index:12;
+            }
+        </style>
+    </head>
+    <body>
+        <p>正常</p>
+        <div id="example"></div>
+        <p>relative</p>
+        <div id="example-relative"></div>
+        <p>absolute</p>
+        <div id="example-absolute"></div>
+        <p>fixed</p>
+        <div id="example-fixed"></div>
+        <p>大框会跟着小框走</p>
+        <div id="example-absolute-position">
+            <div id="example-absolute-position2"></div>
+        </div>
+        <p>大框会跟着小框走</p>
+        <div id="example-absolute-position1">
+            <div id="example-absolute-position3"></div>
+        </div>
+        <p>图层问题</p>
+        <div id="example-absolute-position1">
+            <div id="example-relative-position4"></div>
+        </div>
+        <p>设置z-index</p>
+        <hr>
+        <div id="example-absolute-position1-z"></div>
+        <div id="example-absolute-position5"></div>
+    </body>
+</html>

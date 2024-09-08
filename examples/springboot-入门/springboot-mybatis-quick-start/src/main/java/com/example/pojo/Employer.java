@@ -1,0 +1,26 @@
+package com.example.pojo;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Employer {
+  private Integer id;
+  private String username;
+  private String password;
+  private String name;
+  private Short gender;
+  private String image;
+  private Short job;
+  private LocalDate entrydate;
+  private Integer deptId;
+  private LocalDateTime createdTime;
+  private LocalDateTime alteredTime;
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-radius: 2px;
+            border-collapse: collapse;
+            display: table;
+            align-items: center;
+        }
+        table tr {
+            display: block;
+            align-self: center;
+        }
+        table tr td{
+            border-collapse: collapse;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .img{
+            width: 500px;
+        }
+        p{
+            width: 150px
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+    </form>
+    <table>
+    </table>
+    <script>
+        const data = [
+        {'img':'https://prts.wiki/images/2/26/%E5%A4%B4%E5%83%8F_%E8%89%BE%E6%8B%89.png','name': ['艾拉', 'Ela', 'RS05'], 'sub': '陷阱师', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '1468', 'atk': '588', 'def': '173', 'artsdef': '0', 'cooldown': '70s', 'cost': '12', 'block': '1', 'atkspeed': '0.85s', 'howtoget': '限定寻访', 'gender': '女', 'position': '远程位', 'labels': ['召唤', '控场', '输出'], 'special': '可以使用陷阱来协助作战，但陷阱无法放置于敌人已在的格子中'},
+        {'img':'https://prts.wiki/images/1/11/%E5%A4%B4%E5%83%8F_%E5%8C%BB%E7%94%9F.png','name': ['医生', 'Doc', 'RS06'], 'sub': '教官', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '2217', 'atk': '657', 'def': '360', 'artsdef': '0', 'cooldown': '70s', 'cost': '16', 'block': '2', 'atkspeed': '1.05s', 'howtoget': '限定寻访', 'gender': '男', 'position': '近战位', 'labels': ['治疗', '支援'], 'special': '可以攻击到较远敌人，攻击自身未阻挡的敌人时攻击力提升至120%'},
+        {'img':'https://prts.wiki/images/f/ff/%E5%A4%B4%E5%83%8F_%E5%8F%8C%E6%9C%88.png','name': ['双月', 'Iana', 'RS07'], 'sub': '傀儡师', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '2436', 'atk': '708', 'def': '291', 'artsdef': '0', 'cooldown': '70s', 'cost': '15', 'block': '2', 'atkspeed': '1.2s', 'howtoget': '限定寻访', 'gender': '女', 'position': '近战位', 'labels': ['削弱', '快速复活'], 'special': '受到致命伤时不撤退，切换成<替身>作战（替身阻挡数为0），持续20s后自身再次替换<替身>'} ,
+        {'img':'https://prts.wiki/images/7/70/%E5%A4%B4%E5%83%8F_%E5%AF%BC%E7%81%AB%E7%B4%A2.png','name': ['导火索', 'Fuze', 'RS08'], 'sub': '强攻手', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '2660', 'atk': '795', 'def': '290', 'artsdef': '0', 'cooldown': '80s', 'cost': '25', 'block': '3', 'atkspeed': '1.2s', 'howtoget': '活动获得', 'gender': '男', 'position': '近战位', 'labels': ['群攻', '生存'], 'special': '同时攻击阻挡的所有敌人'} ,
+        {'img':'https://prts.wiki/images/0/05/%E5%A4%B4%E5%83%8F_%E5%A1%91%E5%BF%83.png','name': ['塑心', 'Virtuosa', 'LT22'], 'sub': '巫役', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '1201', 'atk': '485', 'def': '109', 'artsdef': '15', 'cooldown': '70s', 'cost': '16', 'block': '1', 'atkspeed': '1.6s', 'howtoget': '限定寻访', 'gender': '女', 'position': '远程位', 'labels': ['元素', '支援'], 'special': '攻击造成法术伤害，可以造成元素损伤'} ,
+        {'img':'https://prts.wiki/images/7/7e/%E5%A4%B4%E5%83%8F_%E5%9C%A3%E7%BA%A6%E9%80%81%E8%91%AC%E4%BA%BA.png','name': ['圣约送葬人', 'Executor the Ex Foedere', '聖約イグゼキュター', 'LT40'], 'sub': '收割者', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '2491', 'atk': '707', 'def': '461', 'artsdef': '0', 'cooldown': '70s', 'cost': '23', 'block': '2', 'atkspeed': '1.3s', 'howtoget': '标准寻访', 'gender': '男', 'position': '近战位', 'labels': '输出', 'special': '无法被友方角色治疗，攻击造成群体伤害，每攻击到一个敌人回复自身50生命，最大生效数等于阻挡数'} ,
+        {'img':'https://prts.wiki/images/d/d1/%E5%A4%B4%E5%83%8F_%E7%A9%BA%E6%9E%84.png','name': ['空构', 'Spuria', 'スプリア', 'LT12'], 'sub': '怪杰', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '1893', 'atk': '662', 'def': '138', 'artsdef': '10', 'cooldown': '70s', 'cost': '12', 'block': '1', 'atkspeed': '1.3s', 'howtoget': '标准寻访', 'gender': '女', 'position': '远程位', 'labels': ['支援', '输出'], 'special': '自身生命会不断流失'} ,
+        {'img':'https://prts.wiki/images/8/85/%E5%A4%B4%E5%83%8F_%E9%9A%90%E7%8E%B0.png','name': ['隐现', 'Insider', 'インサイダー', 'LT13'], 'sub': '速射手', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '1440', 'atk': '522', 'def': '178', 'artsdef': '0', 'cooldown': '80s', 'cost': '15', 'block': '1', 'atkspeed': '1.0s', 'howtoget': '活动获得', 'gender': '男', 'position': '远程位', 'labels': '输出', 'special': '优先攻击空中单位'} ,
+        {'img':'https://prts.wiki/images/b/b8/%E5%A4%B4%E5%83%8F_%E7%BC%84%E9%BB%98%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF.png','name': ['缄默德克萨斯', 'Texas the Omertosa', '血掟テキサス', 'PL07'], 'sub': '处决者', 'force': '企鹅物流', 'pob': '哥伦比亚', 'race': '鲁珀', 'hp': '1598', 'atk': '569', 'def': '320', 'artsdef': '0', 'cooldown': '18s', 'cost': '10', 'block': '1', 'atkspeed': '0.93s', 'howtoget': '限定寻访', 'gender': '女', 'position': '近战位', 'labels': ['快速复活', '输出'], 'special': '再部署时间大幅度减少'} ,
+        {'img':'https://prts.wiki/images/b/b8/%E5%A4%B4%E5%83%8F_%E8%8F%B2%E4%BA%9A%E6%A2%85%E5%A1%94.png','name': ['菲亚梅塔', 'Fiammetta', 'フィアメッタ', 'LT11'], 'sub': '炮手', 'force': '拉特兰', 'pob': '拉特兰', 'race': '黎博利', 'hp': '1926', 'atk': '861', 'def': '156', 'artsdef': '0', 'cooldown': '70s', 'cost': '29', 'block': '1', 'atkspeed': '2.8s', 'howtoget': '标准寻访', 'gender': '女', 'position': '远程位', 'labels': '输出', 'special': '攻击造成群体物理伤害'} ,
+        {'img':'https://prts.wiki/images/d/d2/%E5%A4%B4%E5%83%8F_%E8%A7%81%E8%A1%8C%E8%80%85.png','name': ['见行者', 'Enforcer', 'エンフォーサー', 'LT10'], 'sub': '推击手', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '1937', 'atk': '653', 'def': '381', 'artsdef': '0', 'cooldown': '80s', 'cost': '22', 'block': '2', 'atkspeed': '1.2s', 'howtoget': '活动获得', 'gender': '男', 'position': '近战位', 'labels': ['位移', '控场'], 'special': '同时攻击阻挡的所有敌人,可以放置于远程位'} ,
+        {'img':'https://prts.wiki/images/6/64/%E5%A4%B4%E5%83%8F_%E7%81%B0%E7%83%AC.png','name': ['灰烬', 'Ash', 'Ash', 'RS01'], 'sub': '速射手', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '1689', 'atk': '534', 'def': '169', 'artsdef': '0', 'cooldown': '70s', 'cost': '14', 'block': '1', 'atkspeed': '1.0s', 'howtoget': '限定寻访', 'gender': '女', 'position': '远程位', 'labels': '输出', 'special': '优先攻击空中单位'} ,
+        {'img':'https://prts.wiki/images/5/51/%E5%A4%B4%E5%83%8F_%E9%9C%9C%E5%8D%8E.png','name': ['霜华', 'Frost', 'Frost', 'RS03'], 'sub': '陷阱师', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '1359', 'atk': '529', 'def': '157', 'artsdef': '0', 'cooldown': '70s', 'cost': '11', 'block': '1', 'atkspeed': '0.85s', 'howtoget': '限定寻访', 'gender': '女', 'position': '远程位', 'labels': ['召唤', '控场'], 'special': '可以使用陷阱来协助作战，但陷阱无法放置于敌人已在的格子中'} ,
+        {'img':'https://prts.wiki/images/c/c1/%E5%A4%B4%E5%83%8F_%E9%97%AA%E5%87%BB.png','name': ['闪击', 'Blitz', 'Blitz', 'RS02'], 'sub': '哨戒铁卫', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '3213', 'atk': '445', 'def': '676', 'artsdef': '0', 'cooldown': '70s', 'cost': '22', 'block': '3', 'atkspeed': '1.2s', 'howtoget': '限定寻访', 'gender': '男', 'position': '近战位', 'labels': ['防护', '输出'], 'special': '能够阻挡三个敌人，可以进行远程攻击'} ,
+        {'img':'https://prts.wiki/images/c/cb/%E5%A4%B4%E5%83%8F_%E6%88%98%E8%BD%A6.png','name': ['战车', 'Tachanka', 'Tachanka', 'RS04'], 'sub': '剑豪', 'force': '彩虹小队', 'pob': '未知', 'race': '未知', 'hp': '2626', 'atk': '621', 'def': '309', 'artsdef': '0', 'cooldown': '80s', 'cost': '24', 'block': '2', 'atkspeed': '1.3s', 'howtoget': '活动获得', 'gender': '男', 'position': '近战位', 'labels': ['爆发', '输出'], 'special': '普通攻击连续造成两次伤害'} ,
+        {'img':'https://prts.wiki/images/b/bb/%E5%A4%B4%E5%83%8F_%E7%A9%BA%E5%BC%A6.png','name': ['空弦', 'Archetto', 'アルケット', 'LT08'], 'sub': '速射手', 'force': '拉特兰', 'pob': '拉特兰', 'race': '黎博利', 'hp': '1705', 'atk': '528', 'def': '172', 'artsdef': '0', 'cooldown': '70s', 'cost': '14', 'block': '1', 'atkspeed': '1.0s', 'howtoget': '标准寻访', 'gender': '女', 'position': '远程位', 'labels': '输出', 'special': '优先攻击空中单位'} ,
+        {'img':'https://prts.wiki/images/6/6a/%E5%A4%B4%E5%83%8F_%E8%8A%B3%E6%B1%80.png','name': ['芳汀', 'Arene', 'アレーン', 'LT06'], 'sub': '领主', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '2250', 'atk': '640', 'def': '340', 'artsdef': '10', 'cooldown': '70s', 'cost': '18', 'block': '2', 'atkspeed': '1.3s', 'howtoget': ['标准寻访', '中坚寻访', '公开招募'], 'gender': '男', 'position': '近战位', 'labels': '输出', 'special': '可以进行远程攻击，但此时攻击力降低至80%'} ,
+        {'img':'https://prts.wiki/images/f/ff/%E5%A4%B4%E5%83%8F_%E5%AE%89%E6%AF%94%E5%B0%94.png','name': ['安比尔', 'Ambriel', 'アンブリエル', 'LT02'], 'sub': '神射手', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '1595', 'atk': '977', 'def': '122', 'artsdef': '0', 'cooldown': '70s', 'cost': '20', 'block': '1', 'atkspeed': '2.7s', 'howtoget': ['公开招募', '标准寻访', '中坚寻访'], 'gender': '女', 'position': '远程位', 'labels': ['输出', '减速'], 'special': '优先攻击攻击范围内防御力最低的敌方单位'} ,
+        {'img':'https://prts.wiki/images/0/0b/%E5%A4%B4%E5%83%8F_%E8%8E%AB%E6%96%AF%E6%8F%90%E9%A9%AC.png','name': ['莫斯提马', 'Mostima', 'モスティマ', 'LT77'], 'sub': '扩散术师', 'force': '拉特兰', 'pob': '拉特兰', 'race': '未公开', 'hp': '1831', 'atk': '834', 'def': '132', 'artsdef': '20', 'cooldown': '70s', 'cost': '34', 'block': '1', 'atkspeed': '2.9s', 'howtoget': ['中坚寻访', '公开招募'], 'gender': '女', 'position': '远程位', 'labels': ['群攻', '支援', '控场'], 'special': '攻击造成群体法术伤害'} ,
+        {'img':'https://prts.wiki/images/d/da/%E5%A4%B4%E5%83%8F_%E9%80%81%E8%91%AC%E4%BA%BA.png','name': ['送葬人', 'Executor', 'イグゼキュター', 'LT01'], 'sub': '散射手', 'force': '拉特兰', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '2330', 'atk': '720', 'def': '185', 'artsdef': '0', 'cooldown': '70s', 'cost': '31', 'block': '1', 'atkspeed': '2.3s', 'howtoget': ['公开招募', '中坚寻访'], 'gender': '男', 'position': '远程位', 'labels': '群攻', 'special': '攻击范围内的所有敌人，对自己前方一横排的敌人攻击力提升至150%'} ,
+        {'img':'https://prts.wiki/images/a/ad/%E5%A4%B4%E5%83%8F_%E8%83%BD%E5%A4%A9%E4%BD%BF.png','name': ['能天使', 'Exusiai', 'エクシア', 'PL03'], 'sub': '速射手', 'force': '企鹅物流', 'pob': '拉特兰', 'race': '萨科塔', 'hp': '1673', 'atk': '540', 'def': '161', 'artsdef': '0', 'cooldown': '70s', 'cost': '14', 'block': '1', 'atkspeed': '1.0s', 'howtoget': ['公开招募', '中坚寻访'], 'gender': '女', 'position': '远程位', 'labels': '输出', 'special': '优先攻击空中单位'} ,
+        {'img':'https://prts.wiki/images/5/58/%E5%A4%B4%E5%83%8F_%E7%A9%BA.png','name': ['空', 'Sora', 'ソラ', 'PL05'], 'sub': '吟游者', 'force': '企鹅物流', 'pob': '因经纪公司要求不公开', 'race': '因经纪公司要求不公开', 'hp': '1356', 'atk': '335', 'def': '238', 'artsdef': '0', 'cooldown': '70s', 'cost': '7', 'block': '1', 'atkspeed': '1.3s', 'howtoget': '中坚寻访', 'gender': '女', 'position': '远程位', 'labels': ['支援', '治疗'], 'special': '不攻击，持续恢复范围内所有友军生命（每秒相当于自身攻击力10%的生命），自身不受鼓舞影响'} ,
+        {'img':'https://prts.wiki/images/a/ab/%E5%A4%B4%E5%83%8F_%E5%8F%AF%E9%A2%82.png','name': ['可颂', 'Croissant', 'クロワッサン', 'PL04'], 'sub': '铁卫', 'force': '企鹅物流', 'pob': '米诺斯', 'race': '丰蹄', 'hp': '3520', 'atk': '380', 'def': '710', 'artsdef': '0', 'cooldown': '70s', 'cost': '22', 'block': '3', 'atkspeed': '1.2s', 'howtoget': ['公开招募', '中坚寻访'], 'gender': '女', 'position': '近战位', 'labels': ['防护', '位移'], 'special': '能够阻挡三个敌人'} ,
+        {'img':'https://prts.wiki/images/5/57/%E5%A4%B4%E5%83%8F_%E5%BE%B7%E5%85%8B%E8%90%A8%E6%96%AF.png','name': ['德克萨斯', 'Texas', 'テキサス', 'PL02'], 'sub': '尖兵', 'force': '企鹅物流', 'pob': '哥伦比亚', 'race': '鲁珀', 'hp': '1950', 'atk': '500', 'def': '343', 'artsdef': '0', 'cooldown': '70s', 'cost': '13', 'block': '2', 'atkspeed': '1.05s', 'howtoget': ['公开招募', '中坚寻访', '见习任务第八阶段奖励'], 'gender': '女', 'position': '近战位', 'labels': ['费用回复', '控场'], 'special': '能够阻挡两个敌人'} ,
+        {'img':'https://prts.wiki/images/1/1f/%E5%A4%B4%E5%83%8F_%E7%BF%8E%E7%BE%BD.png','name': ['翎羽', 'Plume', 'プリュム', 'LT05'], 'sub': '冲锋手', 'force': '拉特兰', 'pob': '拉特兰', 'race': '黎博利', 'hp': '1226', 'atk': '445', 'def': '279', 'artsdef': '0', 'cooldown': '70s', 'cost': '10', 'block': '1', 'atkspeed': '1.0s', 'howtoget': ['公开招募', '标准寻访', '主线剧情', '中坚寻访'], 'gender': '女', 'position': '近战位', 'labels': ['输出', '费用回复'], 'special': '击杀敌人后获得1点部署费用，撤退时返还初始部署费用'}
+        ]
+        const form = document.querySelector("form")
+        function init_table(){
+            const table = document.querySelector("table")
+            const header = document.createElement("tr")
+            header.innerHTML = `<tr>
+                    <td class="img"><p>头像</p></td>
+                    <td class="sub1"><p>姓名</p></td>
+                    <td class="sub2"><p>子职业</p><p>势力</p><p>出身地</p><p>种族</p></td>
+                    <td class="sub3"><p>生命值</p><p>攻击</p><p>防御</p><p>法术抗性</p></td>
+                    <td class="sub4"><p>再部署时间</p><p>部署费用</p><p>阻挡</p><p>攻击间隔</p></td>
+                    <td class="sub5"><p>获取方式</p></td>
+                    <td class="sub6"><p>性别</p><p>位置</p><p>标签</p></td>
+                    <td class="sub7"><p>特性</p></td>
+                </tr>
+            `
+            table.appendChild(header)
+            for (let i = 0; i < data.length; i++){
+                // console.log(1)
+                const newTr = document.createElement("tr")
+                newTr.innerHTML = `
+                <tr>
+                    <td class="img"><img src="${data[i].img}" alt=${data[i].name}></td>
+                    <td class="sub1">${process_attribute(data[i].name)}</td>
+                    <td class="sub2"><p>${data[i].sub}</p><p>${data[i].force}</p><p>${data[i].pob}</p><p>${data[i].race}</p></td>
+                    <td class="sub3"><p>${data[i].hp}</p><p>${data[i].atk}</p><p>${data[i].def}</p><p>${data[i].artsdef}</p></td>
+                    <td class="sub4"><p>${data[i].cooldown}</p><p>${data[i].cost}</p><p>${data[i].block}</p><p>${data[i].atkspeed}</p></td>
+                    <td class="sub5">${process_attribute(data[i].howtoget)}</td>
+                    <td class="sub6"><p>${data[i].gender}</p><p>${data[i].position}</p>${process_attribute(data[i].labels)}</td>
+                    <td class="sub7"><p>${data[i].special}</p></td>
+                </tr>
+                `
+                // console.log(1)
+                table.appendChild(newTr)
+            }
+        }
+        function process_attribute(attr){
+            var str = ""
+            // console.log(attr)
+            if (attr instanceof Array){
+                for (let j = 0; j < attr.length; j++){
+                    // console.log(j)
+                    // console.log(attr[j])
+                    str += `<p>${attr[j]}</p>`
+                }
+                return str
+            }
+            return `<p>${attr}</p>`
+        }
+        function init_radio(){
+            // attrs = ["sub","force","pob","race","howtoget","gender","position"]
+            attrs_list = {}
+            for (let i = 0; i < attrs_radio.length; i++){
+                attrs_list[attrs_radio[i]] = []
+            }
+            for (let i = 0; i < data.length; i++){
+                for (let j = 0; j < attrs_radio.length; j++){
+                    if (data[i][attrs_radio[j]] instanceof Array){
+                        for (k of data[i][attrs_radio[j]]){
+                            attrs_list[attrs_radio[j]].push(k)
+                        }
+                    } else {
+                        attrs_list[attrs_radio[j]].push(data[i][attrs_radio[j]])
+                    }
+                }
+            }
+            for (let j = 0; j < attrs_radio.length; j++){
+                attrs_list[attrs_radio[j]] = Array.from(new Set(attrs_list[attrs_radio[j]]))
+            }
+            // console.log(attrs_list)
+            // const form = document.querySelector("form")
+            var str = form.innerHTML.split("</form>")[0]
+            var str = str + `<div class="radio"><ul>`
+            for (let i in attrs_radio){
+                const key = attrs_radio[i]
+                // console.log(key)
+                str += `<li>`
+                str += `<label for=${key}>${radio_name[i]}</label>`
+                str += `<select name="${key}" class="radio" id=${key}>`
+                str += `<option value=""></option>`
+                console.log(attrs_list[key])
+                if (attrs_list[key] instanceof Array){
+                    for (i in attrs_list[key]){
+                        str += `<option value="${attrs_list[key][i]}">${attrs_list[key][i]}</option>`
+                    }
+                } else{
+                    console.log(attrs_list[key][i])
+                    str += `<option value="${attrs_list[key][i]}">${attrs_list[key][i]}</option>`
+                }
+                
+                str += "</li></select>"
+            }
+            str += `</ul></div>`
+            str += `</form>`
+            console.log(str)
+            form.innerHTML = str
+        }
+        function init_search(){
+            var str = form.innerHTML.split("</form>")[0]
+            str += `<div><ul>`
+            for (i in attrs_search_text){
+                str += `<li>`
+                str += `<label for="${attrs_search_text[i]}">${search_name[i]}</label>`
+                str += `<input type="text" name=${attrs_search_text[i]}  id=${attrs_search_text[i]} value=" ">`
+                str += `</li>`
+            }
+            str += `</ul></div></form>`
+            form.innerHTML = str
+        }
+
+        const attrs_radio = ["sub","force","pob","race","howtoget","gender","position"]
+        const attrs_search_text = ["name","hp","atk","def","artsdef","cooldown","cost","block","atkspeed"]
+        const radio_name = ["子职业","势力","出身地","种族","获取方式","性别","位置"]
+        const search_name = ["姓名","生命值","攻击力","防御力","法术抗性","再部署时间","费用","阻挡数","攻击速度"]
+        init_table()
+        init_search()
+        init_radio()
+
+        function search(){
+            args = {}
+            for (i of attrs_search_text){
+                args[i] = document.querySelector(`form ul li #${i}`).value
+            }
+            for (i of attrs_radio){
+                args[i] = document.querySelector(`form ul li #${i}`).value
+            }
+            console.log(args)
+            for (j in data){
+                var flag = 1
+                for (i of attrs_search_text){
+                    if (data[j][i] instanceof Array){
+                        var tempflag = 0
+                        for (k of data[j][i]){
+                            // console.log(k,args[i],k.slice(0,args[i].length),k.slice(0,args[i].length) == args[i])
+                            if (k.slice(0,args[i].trim().length) == args[i].trim()){
+                                // console.log("checked")
+                                tempflag = tempflag || 1
+                                console.log(tempflag)
+                            } else {
+                                tempflag = tempflag || 0
+                            }
+                        }
+                        flag = tempflag && flag
+                    } else {
+                        // console.log(i,args[i],data[j][i].slice(0,args[i].trim().length),"k",data[j][i])
+                        if (data[j][i].slice(0,args[i].trim().length) == args[i].trim()){
+                            flag = flag && 1
+                        } else {
+                            flag = flag && 0
+                        }
+                    }
+                    // console.log(flag)
+                }
+                for (i of attrs_radio){
+                    // console.log(i,args[i],data[j][i].slice(0,args[i].trim().length),"k",data[j][i])
+                    if (data[j][i].slice(0,args[i].trim().length) == args[i].trim()){
+                        flag = flag && 1
+                    } else {
+                        flag = flag && 0
+                    }
+                }
+                if (flag == 1){
+                    document.querySelector(`table tr:nth-child(${parseInt(j)+2})`).style.display = "block"
+                } else {
+                    document.querySelector(`table tr:nth-child(${parseInt(j)+2})`).style.display = "none"
+                }
+            }
+        }
+        form.addEventListener("input", function(){
+            search()
+        })
+    </script>
+</body>
+</html>

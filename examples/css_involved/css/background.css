@@ -1,0 +1,92 @@
+p{
+                height:300px;
+                width:400px;
+            }
+div{
+                height:300px;
+                width:400px;
+            }
+#example1  {background-color:red}
+#example2  {background-color:#00ff00}
+#example3  {background-color:rgb(0,0,255)}
+#example4  {background-color:rgb(0,255,255,0.5)}
+            
+            
+#example5  {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png")}
+#example6  {background-image:url("../../other/shit.png")
+        }
+            
+            
+#example7  {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-repeat:repeat
+        }
+#example8  {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-repeat:repeat-x
+        }
+#example9  {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-repeat:repeat-y
+        }
+#example10 {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-repeat:no-repeat
+        }
+            
+            
+#example11 {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-size:auto;
+        }
+#example12 {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-size:150px 150px;
+        }
+#example13 {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-size:150% 150%
+        }
+#example14 {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-size:cover
+        }
+#example15 {background-image:url("https://prts.wiki/images/7/78/ISW-NO_%E4%BA%8B%E4%B8%8D%E8%BF%87%E5%9B%9B_%E5%9C%B0%E5%9B%BE.png");
+                    background-size:contain
+        }
+#example16  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:left left;
+                     background-repeat:no-repeat;
+        }
+#example17  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:left center;
+                     background-repeat:no-repeat;
+        }
+#example18  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:left right;
+                     background-repeat:no-repeat;
+        }
+#example19  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:center left;
+                     background-repeat:no-repeat;
+        }
+#example20  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:center center;
+                     background-repeat:no-repeat;
+        }
+#example21  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:center right;
+                     background-repeat:no-repeat;
+        }
+#example22  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:right right;
+                     background-repeat:no-repeat;
+        }
+#example23  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:right center;
+                     background-repeat:no-repeat;
+        }
+#example24  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:right left;
+                     background-repeat:no-repeat;
+        }
+#example25  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:50% 50%;
+                     background-repeat:no-repeat;
+        }
+#example26  {background-image:url("https://prts.wiki/images/ak.png?8efd0");
+                     background-position:100px 100px;
+                     background-repeat:no-repeat;
+        }

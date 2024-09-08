@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            justify-content: center;
+            text-align: center;
+        }
+        .content{
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+            margin-top: 10px;
+        }
+        .content caption{
+            font-size: 2em;
+            font-weight: bold;
+            margin: 1em 0;
+        }
+
+        .content th,td{
+            border: 1px solid #999;
+            text-align: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .content thead tr{
+            background-color: #008c8c;
+            color: #fff;
+        }
+
+        .content tbody tr:nth-child(odd){
+            background-color: #eee;
+        }
+
+        .content tbody tr:hover{
+            background-color: #ccc;
+        }
+
+        .content tbody tr td th:first-child{
+            color: #f40;
+        }
+
+        .content tfoot tr td th{
+            text-align: center;
+            align-items: center;
+            padding-right: 20px;
+        }
+        .graph{
+            width: 100%;
+            height:600px;
+            display: block;
+            position: relative;
+            border: 1px solid black
+        }
+        .header{
+            height: 20%;
+            width:100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <div>
+                <span>名称</span>
+                <input type="text" v-model="name">
+            </div>
+            <div>
+                <span>类别</span>
+                <select name="category" v-model="category" class="class-input">
+                    <option value="日常用品类">日常用品类</option>
+                    <option value="食物类">食物类</option>
+                    <option value="体育器械类">体育器械类</option>
+                    <option value="电子游戏类">电子游戏类</option>
+                    <option value="手残类">手残类</option>
+                </select>
+            </div>
+            <div>
+                <span>数量</span>
+                <input type="text" v-model="quantity">
+            </div>
+            <div>
+                <span>单价</span>
+                <input type="number" step="0.01" v-model="price">
+            </div>
+            <div>
+                <button @click="add" class="upload">添加</button>
+            </div>
+        </div>
+        <div class="table">
+            <table class="content">
+                <thead>
+                    <tr>
+                        <td>
+                            编号
+                        </td>
+                        <td>
+                            名称
+                        </td>
+                        <td>
+                            类别
+                        </td>
+                        <td>
+                            数量
+                        </td>
+                        <td>
+                            单价
+                        </td>
+                        <td>
+                            总价
+                        </td>
+                        <td>
+                            其他
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in list">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.priceItem}}</td>
+                        <td>
+                            <a @click="remove(item.id)">删除</a>
+                            <a @click="edit(item.id)">编辑</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="graph">
+
+            </div>
+            <div>
+                <span>总价:</span><span>{{totalprice}}</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const ModelDom = document.querySelector(".upload")
+        const Modal = new bootstrap.Modal(ModelDom)
+        const app = new Vue({
+            el: "#app",
+            data: {
+                list:[
+                ],
+                name:"篮球",
+                quantity:4,
+                category:"手残类",
+                price: 0.0,
+                priceItem: 0.0,
+                totalprice: 0.0,
+                categories: ["日常用品类","食物类","体育器械类","电子游戏类","手残类"],
+                graphData: []
+            },
+            methods:{
+                async add(){
+                    app.list.push({
+                        id:this.list.length,
+                        name: this.name,
+                        category:this.category,
+                        quantity: this.quantity,
+                        price: this.price,
+                        priceItem: this.price * this.quantity,
+                    })
+                    this.totalprice += this.price * this.quantity
+                    const res = await axios({
+                        url:"http://127.0.0.1:8000/add",
+                        method:"get",
+                        params:{
+                            id:this.list.length,
+                            name: this.name,
+                            category:this.category,
+                            quantity: this.quantity,
+                            price: this.price,
+                            priceItem: this.price * this.quantity,
+                        }
+                    })
+                    for (i in this.graphData){
+                        if (this.graphData[i].name == this.category){
+                            this.graphData[i].value += this.price * this.quantity
+                        }
+                    }
+                    // console.log(this.graphData)
+                    this.option.series.data = this.graphData
+                    this.myChart.setOption(this.option)
+                },
+                async remove(id){
+                    const item = this.list.filter(it => it.id == id)[0]
+                    this.totalprice -= item.priceItem
+                    this.list = this.list.filter(it => it.id != id)
+                    for (i in this.graphData){
+                        if (this.graphData[i].name == item.category){
+                            console.log(item.name)
+                            this.graphData[i].value -= item.priceItem
+                        }
+                    }
+                    console.log(this.graphData)
+                    const res = await axios({
+                        url:"http://127.0.0.1:8000/delete",
+                        method:"get",
+                        params:{
+                            id:id
+                        }
+                    })
+                },
+                edit(id){
+                    console.log("暂不支持")
+                }
+            },
+            async created(){
+                // console.log("created")
+                //alert(`created 响应式数据准备好了 ${this.num}`)
+                const res = await axios({
+                    url:"http://127.0.0.1:8000/data",
+                    method:"get"
+                })
+                this.list = res.data.data
+                for (i of app.categories){
+                    const datas = this.list.filter(it => it.category == i)
+                    var temp = 0.0
+                    for (j of datas){
+                        temp += parseInt(j.priceItem)
+                    }
+                    this.graphData.push({value:temp, name:i})
+                }
+                this.totalprice = this.list.map(it => it.priceItem).reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0)
+                // console.log(this.graphData)
+                // console.log(this.categories)
+                // 这里初始化
+            },
+            // beforeMount(){
+            //     alert(`beforeMount 挂载之前 ${this.num}`)
+            //     // 这里没有vue的视图
+            // },
+            watch:{
+                graphData:{
+                    handler(newValue){
+                        console.log(this.graphData)
+                        this.option.series.data = this.graphData
+                        this.myChart.setOption(this.option)
+                    }
+                }
+            },
+            mounted(){
+                // console.log(this.graphData)
+                this.myChart = echarts.init(document.querySelector(".graph"));
+                this.option = {
+                    tooltip: {
+                        trigger: 'item'
+                    },
+                    legend: {
+                        top: '5%',
+                        left: 'center'
+                    },
+                    series: [{
+                        name: 'Access From',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: 40,
+                                fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data:this.graphData
+                        
+                            // data: [
+                            //     { value: 1048, name: 'Search Engine' },
+                            //     { value: 735, name: 'Direct' },
+                            //     { value: 580, name: 'Email' },
+                            //     { value: 484, name: 'Union Ads' },
+                            //     { value: 300, name: 'Video Ads' }
+                            // ]
+                    }]
+                }
+                // console.log(this.myChart)
+                this.myChart.setOption(this.option)
+            },
+            // beforeUpdate(){
+            //     alert(`beforeUpdate 数据更新之前 ${this.num}`)
+            // },
+            updated(){
+                // console.log(this.graphData)
+                this.option.series.data = this.graphData
+                this.myChart.setOption(this.option)
+            }
+            // beforeDestroy(){
+            //     alert("beforeDestory VUE实例销毁之前")
+            // },
+            // destroyed(){
+            //     alert("destory VUE实例销毁之后")
+            // }
+        })
+    </script>
+</body>
+</html>

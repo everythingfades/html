@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 500px;
+            height: 500px;
+            background-color: violet;
+        }
+        .son{
+            width: 250px;
+            height: 250px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        const father = document.querySelector(".father")
+        const son = document.querySelector(".son")
+        // father.addEventListener("mouseover",function(){
+        //     console.log("你的鼠标惊动了father")
+        // })
+        // father.addEventListener("mouseout",function(){
+        //     console.log("你的鼠标离开了father")
+        // })
+        father.addEventListener("mouseenter",function(){
+            console.log("你的鼠标惊动了father")
+        })
+        father.addEventListener("mouseleave",function(){
+            console.log("你的鼠标离开了father")
+        })
+        son.addEventListener("click", function(){
+            console.log("你点击了son")
+        })
+    </script>
+</body>
+</html>

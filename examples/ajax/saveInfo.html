@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button class="register">注册</button>
+        <button class="edit">修改</button>
+        <input type="text">
+        <p></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        div = document.querySelector("div")
+        document.querySelector(".register").addEventListener("click", function(){
+            axios({
+                url:"http://hmajax.itheima.net/api/settings",
+                method: "get",
+                params: {
+                    creator: "aaa"
+                }
+            }).then((result) => {
+                console.log(result.data.data)
+                document.querySelector("p").innerText = result.data.data.city
+            })
+        })
+        document.querySelector(".edit").addEventListener("click", function(){
+            axios({
+                url:"http://hmajax.itheima.net/api/settings",
+                method: "put",
+                data: {
+                    creator: "aaa",
+                    nickname:"bbb",
+                    province:"河北省",
+                    city:"衡水市",
+                    area:"a区",
+                    avatar:"aaa"
+                }
+            }).then((result) => {
+                console.log(result.data.data)
+                document.querySelector("p").innerText = result.data.data.email
+            })
+        })
+    </script>
+</body>
+</html>

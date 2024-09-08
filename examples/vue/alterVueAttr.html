@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ msg }}
+        {{ count }}
+    </div>
+    <button>
+        加一
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello worlskjd",
+                count: 1
+            }
+        })
+        app.msg = "我被改了"
+        document.querySelector("button").addEventListener("click",()=>{
+            app.count += 1
+        })
+    </script>
+</body>
+</html>

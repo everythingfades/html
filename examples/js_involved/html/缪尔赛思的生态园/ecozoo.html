@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../../swiper11/swiper-bundle.min.css" />
+    <style>
+        .header{
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0%;
+            flex-direction: row;
+            display: flex;
+            background-color:rgb(170, 255, 0);
+        }
+        .header .nav ul{
+            position: relative;
+            width:300px;
+            left: calc(50% - 150px);
+            flex-direction: row;
+            display: flex;
+        }
+        .header .nav ul li{
+            margin: 10px;
+        }
+        .user-info{
+            position:absolute;
+            align-items: center;
+            text-align: center;
+            height: 80px;
+            width: 80px;
+            right: 0%;
+            font-size: 8px;
+        }
+        .avatar{
+            height: 40px;
+            width: 40px;
+        }
+        .content{
+            margin: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 80px;
+            bottom: 30%;
+            width:100%;
+            height: calc(60% - 80px);
+            overflow-y:scroll;
+            overflow:auto;
+        }
+        .row{
+            position:relative;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: row;
+            display:flex;
+            border-bottom: 5px solid #800000;
+        }
+        .item{
+            position: relative;
+            height: 200px;
+            width: 160px;
+            top: 10px;
+            border: 2px solid red;
+            margin: 10px;
+        }
+        .item img{
+            margin:auto;
+            height: 120px;
+            width: 120px;
+            border: 1px solid aqua;
+        }
+        .item h2{
+            margin:auto;
+            padding:10px;
+            height: 10px;
+            width: 100px;
+            font-size: 15px;
+        }
+        .item p{
+            margin:auto;
+            margin-top: 10px;
+            height: 10px;
+            width: 100px;
+            font-size:12px;
+        }
+        .info{
+            position:relative;
+            height: fit-content;
+            width: 25%;
+            bottom: 50px;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+        .bottom{
+            position: fixed;
+            bottom: 0px;
+            margin-bottom: 20px;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: row;
+        }
+        .information{
+            position:relative;
+            height: 200px;
+            vertical-align: top;
+            text-align: left;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            overflow-y: auto;
+        }
+        .list{
+            position:relative;
+            height: 200px;
+            vertical-align: top;
+            text-align: left;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            overflow-y: auto;
+        }
+        .quantity{
+            margin: auto;
+            position:absolute;
+            bottom: 5px;
+            right: 1px;
+        }
+        .swiper-box{
+            position: relative;
+            margin: 20px;
+            border: 1px solid black;
+            border-radius: 2px;
+            height: 200px;
+            width: 30%;
+        }
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-wrapper img{
+            height: 200px;
+            width: 200px;
+        }
+        #search-box{
+            position: absolute;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="user-info">
+            <img class="avatar">
+            <p class="nickname">当前用户:</p>
+            <a class="quit" href="loginPage.html">退出登录</a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="loginPage.html">登录</a></li>
+                <li><a href="hybrid.html">杂交实验室</a></li>
+            </ul>
+        </div>
+        <div class="search-box">
+            <p>搜索:</p>
+            <input id="search" type="text">
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="item" data-id="1">
+                <img src="https://p1.ssl.qhimg.com/t0134cc4f50ace66abb.jpg">
+                <h2>洋桔梗</h2>
+                <button>摘花</button>
+                <p class="quantity">数量:3</p>
+                <ul style="display: none;">
+                    <li>拉丁学名:Eustoma grandiflorum（Raf.）Shinners</li>
+                    <li>别名:草原龙胆，土耳其桔梗、丽钵花、德州兰铃</li>
+                    <li>界:植物界</li>
+                    <li>门:被子植物门</li>
+                    <li>纲:木兰纲</li>
+                    <li>目:菊超目</li>
+                    <li>科:龙胆科</li>
+                    <li>属:洋桔梗属</li>
+                    <li>种:洋桔梗</li>
+                    <li>分布区域:原产美国内布拉斯加州和得克萨斯州，引种到欧洲和日本</li>
+                    <li>颜色:蓝绿色</li>
+                </ul>
+            </div>
+            <div class="item" data-id="2">
+                <img src="https://img2.lrgarden.com/feed_pic/90/1/1000184154_24294_1495158785.jpg">
+                <h2>家天竺葵</h2>
+                <button>摘花</button>
+                <p class="quantity">数量:3</p>
+                <ul style="display: none;">
+                    <li>拉丁学名:Pelargonium domesticum L. H. Bailey</li>
+                    <li>别名:大花天竺葵、洋蝴蝶</li>
+                    <li>界:植物界</li>
+                    <li>门:被子植物门</li>
+                    <li>纲:木兰纲</li>
+                    <li>目:牻牛儿苗目</li>
+                    <li>科:牻牛儿苗科</li>
+                    <li>属:天竺葵属</li>
+                    <li>种:家天竺葵</li>
+                    <li>颜色:红</li>
+                </ul>
+            </div>
+            <div class="item" data-id="3">
+                <img src="https://th.bing.com/th/id/OIP.boLwJfKhI2vEgR7Dh9R4EQHaE8?rs=1&pid=ImgDetMain">
+                <h2>素方花</h2>
+                <button>摘花</button>
+                <p class="quantity">数量:3</p>
+                <ul style="display: none;">
+                    <li>拉丁学名:Jasminum officinale L.</li>
+                    <li>界:植物界</li>
+                    <li>门:被子植物门</li>
+                    <li>纲:木兰纲</li>
+                    <li>目:唇形目</li>
+                    <li>科:木犀科</li>
+                    <li>属:素馨属</li>
+                    <li>种:素方花</li>
+                    <li>颜色:暗红色</li>
+                </ul>
+            </div>
+            <div class="item" data-id="4">
+                <img src="https://th.bing.com/th/id/OIP.pgxFr7ci-GnSaaQMiMuWGAHaEZ?rs=1&pid=ImgDetMain">
+                <h2>竹节蓼</h2>
+                <button>摘花</button>
+                <p class="quantity">数量:3</p>
+                <ul style="display: none;">
+                    <li>拉丁学名:Muehlenbeckia platyclada (F. Muell. ex Hook.) Meisn.</li>
+                    <li>别名:扁叶蓼、扁茎竹、百足草、扁足蓼、扁竹蓼</li>
+                    <li>界:植物界</li>
+                    <li>门:被子植物门</li>
+                    <li>纲:木兰纲</li>
+                    <li>目:石竹目</li>
+                    <li>科:蓼科</li>
+                    <li>属:千叶兰属</li>
+                    <li>种:竹节蓼</li>
+                    <li>颜色:暗褐色</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" data-id="1">
+                <img src="https://www.168hua.com/uppic/image/20190603/20190603142822_64687.jpg">
+                <h2>水塔花</h2>
+                <button>摘花</button>
+                <p class="quantity">数量:3</p>
+                <ul style="display: none;">
+                    <li>拉丁学名:Billbergia pyramidalis (Sims) Lindl.</li>
+                    <li>别名:火焰凤梨、比尔见亚、红藻凤梨、水槽凤梨、红笔凤梨</li>
+                    <li>界:植物界</li>
+                    <li>门:被子植物门</li>
+                    <li>纲:木兰纲</li>
+                    <li>目:禾本目</li>
+                    <li>科:凤梨科</li>
+                    <li>属:水塔花属</li>
+                    <li>种:水塔花</li>
+                    <li>颜色:鲜红色</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="bottom">
+    <div class="info">
+    请输入植物名称:<input id="name" type="text"><br>
+    请输入植物图片url:<input id="url" type="text" placeholder="暂不支持上传"><br>
+    请输入植物属性(请以json字符串格式上传)<input id="price" type="text">
+    请输入植物数量:<input id="quantity" type="number" placeholder="1">
+        <button class="plant">
+            种植植物
+        </button>
+        <button class="plant-random">
+            种植随机小花
+        </button>
+    </div>
+    <div class="information">
+        <p class="text"></p>
+    </div>
+    <div class="list">
+        <p class="text"></p>
+    </div>
+    <div class="swiper-box">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="https://th.bing.com/th/id/OIP.6pxCzLg84K6SKSo9XbureAHaHa?rs=1&pid=ImgDetMain"></div>
+              <div class="swiper-slide">Slide 1</div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="../../../../swiper11/swiper-bundle.min.js"></script>
+
+    <script>
+        var random = 1
+        const name = localStorage.getItem("name")
+        const avatar = localStorage.getItem("avatar")
+        if (name == undefined){
+            location.href = "loginPage.html"
+            alert("您还未登录")
+        }
+        const nickname = document.querySelector(".nickname")
+        const img = document.querySelector(".avatar")
+        nickname.innerText = `当前用户:${name}`
+        img.src = avatar
+        const content = document.querySelector(".content")
+        const plant = document.querySelector(".info .plant")
+        const plantRandom = document.querySelector(".info .plant-random")
+        var itemList = []
+        const pickedList = []
+        const search = document.querySelector(".search-box input")
+        function Flower(name, url, lis){
+            this.name = name
+            this.url = url
+            const attributes = []
+            // console.log(lis)
+            for (i of lis){
+                attributes.push(i.innerText)
+            }
+            this.attributes = {}
+            // console.log(attributes)
+            attributes.forEach((it) => this.attributes[it.split(":")[0]] = it.split(":")[1])
+        }
+        function update(){
+            // itemList.splice(0,itemList.length)
+            const wswiper = document.querySelector(".swiper-wrapper")
+            while(wswiper.hasChildNodes()){
+                wswiper.removeChild(wswiper.firstChild);
+            }
+            const items = document.querySelectorAll(".item")
+            for (let i = itemList.length; i < items.length; i++){
+                const temp = items[i].children
+                // console.log(temp[4])
+                // itemList.push({"name":temp[1].innerText,"url":temp[0].src})
+                itemList.push(new Flower(temp[1].innerText, temp[0].src, temp[4].children))
+            }
+            for (let i = 0; i < itemList.length; i++){
+                const newDiv = document.createElement("div")
+                // console.log(newDiv.innerHTML)
+                newDiv.innerHTML = `<img src="${itemList[i].url}">\n\n`
+                newDiv.className = "swiper-slide"
+                wswiper.appendChild(newDiv)
+            }
+            document.querySelector(".list p").innerText = "生态园里有:\n\n" + itemList.map((item) => `${item["name"]}`).join("\n")
+            if (mySwiper != undefined){
+                mySwiper.destroy()
+            }
+            var mySwiper = new Swiper(".mySwiper", {
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+                autoplay: {
+                    autoplay: false,
+                    delay: 1000,
+                    disableOnInteraction: false
+                },
+                loop: true,
+            })
+        }
+        function buy(e){
+            const quantity = parseInt(e.target.nextElementSibling.innerText.slice(3))
+            pickedList.push(itemList.find((it) => it.name == e.target.previousElementSibling.innerText))
+            localStorage.setItem("picked", JSON.stringify(pickedList))
+            if (quantity === 1){
+                e.target.parentNode.parentNode.removeChild(e.target.parentNode)
+                // console.log(e.target.parentNode.children[1])
+                itemList = itemList.filter((item) => item.name != e.target.parentNode.children[1].innerText)
+            } else {
+                e.target.nextElementSibling.innerText = "数量:" + (quantity - 1)
+            }
+            console.log(e.target.previousElementSibling.innerText)
+            console.log(itemList)
+
+            update()
+        }
+        function upload_single(name, attr, url, quantity){
+            const newItem = document.createElement("div")
+            var attributes
+            try{
+                attributes = JSON.parse(attr)
+            } catch (e) {
+                console.log(e)
+                alert("json格式错误,请重新检查")
+            }
+            var str = `<ul style="display:none;">`
+            for (i of Object.entries(attributes)){
+                str += `<li>${i[0]}:${i[1]}</li>`
+            }
+            str += `</ul>`
+            newItem.innerHTML = `
+                <img src="${url}" alt="${name}">
+                <h2>${name}</h2>
+                <button>摘花</button>
+                <p class="quantity">数量:${quantity}</p>
+                ${str}
+            `
+            newItem.className = "item"
+            // console.log(newItem.children[4].children)
+            const targetRow = findAvailableRow()
+            if (targetRow == -1){
+                const newRow = document.createElement("div")
+                newRow.classList.add("row")
+                newRow.appendChild(newItem)
+                content.appendChild(newRow)
+            } else {
+                const rows = document.querySelectorAll(".row")
+                rows[targetRow].appendChild(newItem)
+            }
+            itemList.push(new Flower(name, url, (newItem.children[4].children)))
+            // console.log(itemList)
+            update()
+        }
+        function upload(){
+            const name = document.querySelector(".info #name").value
+            const attr = document.querySelector(".info #price").value
+            const url = document.querySelector(".info #url").value
+            const quantity = parseInt(document.querySelector(".info #quantity").value)
+            // console.log(quantity)
+            // console.log(name)
+            upload_single(name, attr, url, quantity)
+        }
+        function findAvailableRow(){
+            const rows = document.querySelectorAll(".row")
+            for (let i = 0; i < rows.length; i++){
+                const numElements = rows[i].children.length
+                if (numElements < 4){
+                    return i;
+                }
+            }
+            return -1;
+        }
+        content.addEventListener("click", function(e){
+            if(e.target.tagName == "BUTTON"){
+                buy(e)
+                update()
+            }
+        })
+        content.addEventListener("mouseover", function(e){
+            const information = document.querySelector(".information p")
+            if(e.target.className == "item"){
+                var str = `这是${e.target.children[1].innerText},\n`
+                if (e.target.children[4] != undefined){
+                    for (i of e.target.children[4].children){
+                        str += i.innerText
+                        str += "\n"
+                    }
+                }
+                information.innerText = str
+            }
+        })
+        plant.addEventListener("click", function(){
+            upload()
+        })
+        plantRandom.addEventListener("click", function(){
+            const colors = ["红色","橙色","黄色","绿色","青色","蓝色","紫色"]
+            // console.log(`{"颜色":"${colors[Math.floor(Math.random() * colors.length)]}"}`)
+            upload_single(`random flower${random}`,`{"颜色":"${colors[Math.floor(Math.random() * colors.length)]}"}`, "https://img.lovepik.com/free-png/20210923/lovepik-cute-cartoon-little-flowers-png-image_401266203_wh1200.png",1)
+            random += 1
+        })
+        update()
+        search.addEventListener("input", function(){
+            const searchText = search.value
+            if (searchText.length == 0){
+                itemList.forEach((item, index) => {
+                content.children[parseInt(index / 4)].children[index % 4].style.display = "block"
+                })
+                return
+            }
+            console.log(itemList.filter((it) => it.name.slice(0,searchText.length) == searchText))
+            itemList.filter((it) => it.name.slice(0,searchText.length) != searchText).forEach((item, index) => {
+                content.children[parseInt(index / 4)].children[index % 4].style.display = "none"
+            })
+            itemList.filter((it) => it.name.slice(0,searchText.length) == searchText).forEach((item, index) => {
+                content.children[parseInt(index / 4)].children[index % 4].style.display = "block"
+            })
+        })
+        document.querySelector(".user-info a").addEventListener("click", function(){
+            localStorage.removeItem("name")
+            localStorage.removeItem("avatar")
+        })
+    </script>
+</body>
+</html>

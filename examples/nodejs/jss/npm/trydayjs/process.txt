@@ -1,0 +1,5 @@
+1. 首先先确认有无package.json,没有用npm init -y
+
+2. 下包 npm i 包名
+
+3. 使用包

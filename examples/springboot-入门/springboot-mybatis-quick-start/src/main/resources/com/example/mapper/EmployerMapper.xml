@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.EmployerMapper">
+  <sql id="commonSelect">
+    Select * 
+    from employers 
+  </sql>
+  <select id="list" resultType="com.example.pojo.Employer"> 
+    <!-- Select * 
+    from employers  -->
+    <include refid="commonSelect">
+      
+    </include>
+    <where>
+      <if test="name != null">
+        name LIKE CONCAT('%',#{name},'%') 
+      </if>
+      <if test="gender != -1">
+        AND gender = #{gender} 
+      </if>
+      <if test="begin != null and end != null">
+      AND entrydate BETWEEN #{begin} AND #{end} 
+      </if>
+    </where>
+    ORDER BY altered_time; 
+  </select>
+
+  <!-- <delete id="deleteByIds">
+    delete from employers where id in
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete> -->
+
+  <!-- listAllEmployers --> 
+
+  <!-- <select id="listAllEmployers">
+    select * from employers
+  </select> -->
+
+  <!-- countAllEmployers --> 
+
+  <select id="countAllEmployers">
+    select count(*) from employers
+  </select>
+
+  <!-- page --> 
+
+  <select id="page">
+    select * from employers limit #{start},#{pageSize}
+  </select>
+
+  <select id="pageConditional" resultType="com.example.pojo.Employer"> 
+    <!-- Select * 
+    from employers  -->
+    <include refid="commonSelect">
+      
+    </include>
+    <where>
+      <if test="name != null">
+        name LIKE CONCAT('%',#{name},'%') 
+      </if>
+      <if test="gender != -1 and gender != null">
+        AND gender = #{gender} 
+      </if>
+      <if test="begin != null and end != null">
+      AND entrydate BETWEEN #{begin} AND #{end} 
+      </if>
+    </where>
+    ORDER BY id
+    LIMIT #{start}, #{pageSize}; 
+  </select>
+
+  <!-- countAllEmployersConditional --> 
+
+  <select id="countAllEmployersConditional">
+    select count(*) from employers
+    <where>
+      <if test="name != null">
+        name LIKE CONCAT('%',#{name},'%') 
+      </if>
+      <if test="gender != -1">
+        AND gender = #{gender} 
+      </if>
+      <if test="begin != null and end != null">
+      AND entrydate BETWEEN #{begin} AND #{end} 
+      </if>
+    </where>
+    ORDER BY id;
+  </select>
+
+  <!-- newEmployer --> 
+
+  <insert id="newEmployer">
+    insert into employers(username, password, name, gender, image, job, entrydate, dept_id, created_time, altered_time) VALUES
+(#{username},#{password},#{name},#{gender},#{image},#{job}, #{entrydate}, #{deptId}, now(),now())
+  </insert>
+</mapper>

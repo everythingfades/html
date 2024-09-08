@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emps>
+  <emp>
+    <name>张三</name>
+    <age>22</age>
+    <gender>男</gender>
+    <type>1</type>
+  </emp>
+  <emp>
+    <name>李四</name>
+    <age>33</age>
+    <gender>沃尔玛购物袋</gender>
+    <type>2</type>
+  </emp>
+  <emp>
+    <name>王五</name>
+    <age>44</age>
+    <gender>武装直升机</gender>
+    <type>3</type>
+  </emp>
+</emps>

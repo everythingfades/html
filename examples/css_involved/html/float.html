@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>网页</title>
+        <meta charset="UTF-8">
+        <style>
+            #block{
+                width: 200px;
+                height: 200px;
+                background-color:violet;
+            }
+            #box{
+                width: 400px;
+                height: 400px;
+                background-color:aqua;
+            }
+            #block-left{
+                width: 200px;
+                height: 200px;
+                background-color:violet;
+                float:left;
+            }
+            #box-left{
+                width: 400px;
+                height: 400px;
+                background-color:aqua;
+            }
+            #block-right{
+                width: 200px;
+                height: 200px;
+                background-color:violet;
+                float:right;
+            }
+            #box-right{
+                width: 400px;
+                height: 400px;
+                background-color:aqua;
+            }
+            #block1-right-stack{
+                width: 200px;
+                height: 200px;
+                background-color:violet;
+                float:right;
+            }
+            #block2-right-stack{
+                width: 200px;
+                height: 200px;
+                background-color:purple;
+                float:right;
+            }
+            #block3-right-stack{
+                width: 200px;
+                height: 200px;
+                background-color:red;
+                float:right;
+            }
+            #box-right-stack{
+                width: 400px;
+                height: 400px;
+                background-color:aqua;
+            }
+            #block1-right-stack-non{
+                width: 200px;
+                height: 200px;
+                background-color:violet;
+            }
+            #block2-right-stack-non{
+                width: 200px;
+                height: 200px;
+                background-color:purple;
+            }
+            #block3-right-stack-non{
+                width: 200px;
+                height: 200px;
+                background-color:red;
+            }
+            #box-right-stack-non{
+                width: 400px;
+                height: 400px;
+                background-color:aqua;
+            }
+            #block1-right-stack-non-inline{
+                width: 200px;
+                height: 200px;
+                background-color:violet;
+            }
+            #block2-right-stack-non-inline{
+                width: 200px;
+                height: 200px;
+                background-color:purple;
+            }
+            #block3-right-stack-non-inline{
+                width: 200px;
+                height: 200px;
+                background-color:red;
+            }
+            #box-right-stack-non-inline{
+                width: 400px;
+                height: 400px;
+                background-color:aqua;
+            }
+            ul li{
+                float:left;
+                margin: 0 40px;
+                border: 3px solid violet;
+            }
+            #container{
+                width:500px;
+                height:500px;
+                background-color:gray;
+            }
+            #block1-right-stack1{
+                width: 200px;
+                height: 200px;
+                background-color:violet;
+                float:right;
+            }
+            #block2-right-stack1{
+                width: 200px;
+                height: 200px;
+                background-color:purple;
+                float:right;
+            }
+            #block3-right-stack1{
+                width: 200px;
+                height: 200px;
+                background-color:red;
+                float:right;
+            }
+            #box-right-stack1{
+                width: 400px;
+                height: 400px;
+                background-color:aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <p>这是没有脱离文档流,没有float属性的样子</p>
+        <div id="block"></div>
+        <div id="box"></div>
+        <p>这是脱离文档流,float:left的样子</p>
+        <div id="block-left"></div>
+        <div id="box-left"></div>
+        <p>这是脱离文档流,float:right的样子</p>
+        <div id="block-right"></div>
+        <div id="box-right"></div>
+        <p>这是脱离文档流,多个元素float:right的样子</p>
+        <div id="block1-right-stack"></div>
+        <div id="block2-right-stack"></div>
+        <div id="block3-right-stack"></div>
+        <div id="box-right-stack"></div>
+        <p>这是没有脱离文档流,多个块元素堆叠的样子</p>
+        <div id="block1-right-stack-non"></div>
+        <div id="block2-right-stack-non"></div>
+        <div id="block3-right-stack-non"></div>
+        <div id="box-right-stack-non"></div>
+        <p>这是没有脱离文档流,多个行内元素堆叠的样子</p>
+        <img src="https://prts.wiki/images/ak.png?8efd0" alt="ak" id="block1-right-stack-non-inline">
+        <img src="https://prts.wiki/images/ak.png?8efd0" alt="ak" id="block2-right-stack-non-inline">
+        <img src="https://prts.wiki/images/ak.png?8efd0" alt="ak" id="block3-right-stack-non-inline">
+        <img src="https://prts.wiki/images/ak.png?8efd0" alt="ak" id="box-right-stack-non-inline">
+        <p>应用:横向摆放列表做网页导航</p>
+        <ul type="none">
+            <li><a href="#">文本1</a></li>
+            <li><a href="#">文本2</a></li>
+            <li><a href="#">文本3</a></li>
+            <li><a href="#">文本4</a></li>
+            <li><a href="#">文本5</a></li>
+        </ul>
+        <p>这是脱离文档流,多个元素float:right的样子,容器大小不够会被挤压到下一行</p>
+        <div id="container">
+            <div id="block1-right-stack1"></div>
+            <div id="block2-right-stack1"></div>
+            <div id="block3-right-stack1"></div>
+            <div id="box-right-stack1"></div>
+        </div>
+    </body>
+</html>

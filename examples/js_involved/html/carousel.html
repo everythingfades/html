@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+    <style>
+        .img img{
+            background-color: yelo;
+            margin:  auto;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius:20px;
+            height: 200px;
+            width: 200px;
+            align-items: center;
+        }
+        .img ul{
+            display:flex;
+            list-style: none;
+        }
+        .img ul li{
+            width: 12px;
+            height: 12px;
+            opacity: 0.4;
+            background: #f80101;
+            border-radius: 50%;
+            border: 5px;
+            margin: 5px;
+        }
+
+        .img ul li.active{
+            width: 12px;
+            height: 12px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="img" >
+        <a href="https://prts.wiki/w/黍"><img src="https://prts.wiki/images/f/f2/%E5%A4%B4%E5%83%8F_%E9%BB%8D.png"></a>
+        <ul>
+            <li class="active" data-id="0"></li>
+            <li data-id="1"></li>
+            <li data-id="2"></li>
+            <li data-id="3"></li>
+            <li data-id="4"></li>
+            <button id="left"><</button>
+            <button id="right">></button>
+        </ul>
+    </div>
+    <div class="box">
+        <p>黍</p>
+    </div>
+    <script>
+        const data = [
+            {url: 'https://prts.wiki/images/f/f2/%E5%A4%B4%E5%83%8F_%E9%BB%8D.png',title:'黍',gender:'female'},
+            {url: 'https://prts.wiki/images/0/09/%E5%A4%B4%E5%83%8F_%E9%87%8D%E5%B2%B3.png',title:'重岳',gender:'male'},
+            {url: 'https://prts.wiki/images/9/9c/%E5%A4%B4%E5%83%8F_%E5%B9%B4.png',title:'年',gender:'female'},
+            {url: 'https://prts.wiki/images/2/2c/%E5%A4%B4%E5%83%8F_%E4%BB%A4.png', title:'令',gender:'female'},
+            {url: 'https://prts.wiki/images/6/6b/%E5%A4%B4%E5%83%8F_%E5%A4%95.png',title:'夕',gender:'female'}
+        ]
+        // const random = parseInt(Math.random() * data.length)
+        
+        // const img = document.querySelector(".img img")
+        // console.log(random)
+        // img.src = data[random].url
+        
+        // const p = document.querySelector(".box p")
+        // p.innerHTML = `这是${data[random].title}${data[random].gender == "male" ? "他" : "她"}是个限定六星`
+
+        // const circle = document.querySelector(`.img ul li:nth-child(${random + 1})`)
+        // circle.classList.add('active')
+        var random = 0
+        const img = document.querySelector(".img a img")
+        const a = document.querySelector(".img a")
+        const p = document.querySelector(".box p")
+        const circle = document.querySelector(`.img ul li:nth-child(${random + 1})`)
+        const circles = document.querySelectorAll(".img ul li")
+        const ul = document.querySelector(".img ul")
+        function change(increment){
+            random = parseInt(random) + parseInt(increment)
+            changeTo(random)
+        }
+        function changeTo(increment){
+            random = increment
+            while(random < 0){
+                random += data.length
+            }
+            while(random >= data.length){
+                random -= data.length
+            }
+            img.src = data[random].url
+            p.innerHTML = `这是${data[random].title}${data[random].gender == "male" ? "他" : "她"}是个限定六星`
+            document.querySelector('.img ul li.active').classList.remove('active')
+            document.querySelector(`.img ul li:nth-child(${parseInt(random) + 1})`).classList.add('active')
+        }
+            // random = parseInt(Math.random() * data.length)
+
+        const left = document.querySelector("#left")
+        const right = document.querySelector("#right")
+        left.addEventListener("click", function(){change(-1)})
+        right.addEventListener("click", function(){change(1)})
+        let timer = setInterval(change,1000,1)
+        img.addEventListener("mouseenter", function(){
+            clearInterval(timer)
+        })
+        img.addEventListener("mouseleave", function(){
+            clearInterval(timer)
+            timer = setInterval(change,1000,1)
+        })
+        // for (let i = 0; i < circles.length; i++){
+        //     circles[i].addEventListener("mouseenter", function(){
+        //         changeTo(i)
+        //         clearInterval(timer)
+        //     })
+        //     circles[i].addEventListener("mouseleave", function(){
+        //         clearInterval(timer)
+        //         timer = setInterval(change,1000,1)
+        //     })
+        // }
+        // 事件委托写法:
+        ul.addEventListener("mouseover", function(e){
+            if (e.target.tagName === "LI"){
+                changeTo(e.target.dataset.id)
+                clearInterval(timer)
+            }
+        })
+        ul.addEventListener("mouseout", function(e){
+            if (e.target.tagName === "LI"){
+                clearInterval(timer)
+                timer = setInterval(change,1000,1)
+            }
+        })
+    </script>
+</body>
+</html>

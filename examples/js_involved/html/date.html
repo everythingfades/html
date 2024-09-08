@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d0"></div>
+    <div id="d1"></div>
+    <div id="d2"></div>
+    <div id="d3"></div>
+    <script>
+        const div = document.querySelector("#d0")
+        const div1 = document.querySelector("#d1")
+        const div2 = document.querySelector("#d2")
+        const div3 = document.querySelector("#d3")
+        function addZero(a){
+            if (a >= 10){
+                return a
+            }
+            return "0" + a
+        }
+        function getTime(){
+            const date = new Date()
+            return `现在是${
+                date.getFullYear()}年 ${
+                addZero(date.getMonth() + 1)}月 ${
+                addZero(date.getDate())}日 星期${
+                NUM[date.getDay()]} ${
+                addZero(date.getHours())}点${
+                addZero(date.getMinutes())}分${
+                addZero(date.getSeconds())}秒`
+        }
+        const NUM = ["一","二","三","四","五","六","日"]
+        
+        setInterval(function(){
+            div.innerText = getTime()
+            const date = new Date()
+            div1.innerText = date.toLocaleString()
+            div2.innerText = date.toDateString()
+            div3.innerText = date.toISOString()
+        },1000)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <!-- <style>
+        .login-box {
+            position: absolute;  
+            top: calc(50% - 135px);   
+            left: calc(50% - 180px);
+            height: 270px;
+            width: 360px;
+            border: 1px solid #53c484;
+            border-radius: 5px;
+            background-color: black;
+            opacity: 0.5;
+            color: white;
+            text-align: justify;
+            vertical-align: middle;
+            backdrop-filter:blur(100px);
+            z-index: 100;
+        }
+        #video-item{
+            position: absolute;
+            height: 100%;
+            overflow: hidden;
+            width: auto;
+            z-index: -99;
+        }
+        #title{
+            font-weight: 600;
+            color: rgb(170, 255, 0);
+            font-size: 30px;
+        }
+        .wrapper{
+            width: 90%;
+            height: 95%;
+            position: relative;
+            left: calc(50%-135px);
+            align-items: center;
+            text-align: center;
+            vertical-align: middle;
+        }
+        div input{
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 80%;
+            height: 25px;
+            margin: 5px;
+        }
+        .login-box button{
+            height: 30px;
+            width: 60px;
+            border: 1px solid yellowgreen;
+            background-color: rgb(170, 255, 0);
+            border-radius: 4px;
+            margin-left: 10px;
+            opacity: 0.75;
+        }
+    </style> -->
+</head>
+<body>
+    <!-- <img src="https://bkimg.cdn.bcebos.com/pic/f31fbe096b63f624df8f89e98944ebf81b4ca30e?x-bce-process=image/resize,m_lfit,w_536,limit_1/quality,Q_70"> -->
+
+    <!-- <audio style="display: none;position: fixed" src="../../other/《明日方舟》EP -Morning Dew.wav",autoplay="autoplay",loop="loop"></audio> -->
+    <div class="login-box">
+        <div class="wrapper">
+            <p id="title">Login</p>
+            <div class="item">
+                <input type="text" name="username" placeholder="请输入用户名">
+            </div>
+            <div class="item" name="username" style="margin-top: 5px;">
+                <input type="text" name="password" placeholder="请输入密码">
+            </div>
+            <span id="error" style="color: red;"></span>
+            <a class="forget-password" style="margin: 10px;" href="findPassword.html">忘记密码?</a>
+            <div class="buttons" style="margin-top: 10px;">
+                <button class="btn">登录</button><button>注册</button>
+            </div>
+        </div>
+    </div>
+    <!-- <script>
+        var accounts = []
+        console.log(localStorage.getItem("accounts"))
+        if (localStorage.getItem("accounts") == null){
+            accounts = [
+                {"username": "doctor", "password": "doctor", "name":"博士","avatar":"https://prts.wiki/images/4/43/%E6%80%AA%E7%9B%97%E7%9A%84%E5%AF%86%E5%AE%A4%E6%8C%91%E6%88%98_%E5%A4%B4%E5%83%8F_%E5%8D%9A%E5%A3%AB.png?20230327124224"},
+                {"username": "amiya", "password": "amiya","name":"阿米娅","avatar":"https://prts.wiki/images/c/c6/%E5%A4%B4%E5%83%8F_%E9%98%BF%E7%B1%B3%E5%A8%85%28%E8%BF%91%E5%8D%AB%29_skin1.png"},
+                {"username": "muelsyse","password": "muelsyse","name":"缪尔赛思","avatar":"https://album.biliimg.com/bfs/new_dyn/8a317173abe26488fd0065a5999e11af13167438.jpg@264w_264h_1e_1c.avif"}
+        ]
+            localStorage.setItem("accounts",JSON.stringify(accounts))
+        } else {
+            accounts = JSON.parse(localStorage.getItem("accounts"))
+        }
+        const username = document.querySelector(".item [name=username]")
+        const password = document.querySelector(".item [name=password]")
+        const login_button = document.querySelector(".buttons :nth-child(1)")
+        const register_button = document.querySelector(".buttons :nth-child(2)")
+        const error_message = document.querySelector("#error")
+        login_button.addEventListener("click", function(){
+            flag = 0
+            for (i of accounts){
+                console.log(i["username"],username.value)
+                if (i["username"] == username.value){
+                    if (i["password"] == password.value){
+                        error.innerText = "登录成功,正在跳转"
+                        error.style.color = "rgb(170,255,0)"
+                        console.log("登录成功")
+                        localStorage.setItem("name",i["name"])
+                        localStorage.setItem("avatar",i["avatar"])
+                        location.href = "ecozoo.html"
+                        return
+                    }
+                }
+            }
+            error.style.color = "red"
+            error.innerText = "用户名或密码错误"
+        })
+        register_button.addEventListener("click",function(){
+            location.href = "register.html"
+            return
+        })
+    </script> -->
+</body>
+</html>

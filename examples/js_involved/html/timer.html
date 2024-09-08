@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 3px solid violet;
+        }
+        .nav{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            border: 3px solid blue;
+            padding: 15px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function print(){
+            console.log("executed")
+        }
+        let timer1 = setInterval(print,1000)
+        setInterval(function(){console.log("我执行了")},1000)
+        clearInterval(timer1)
+    </script>
+</body>
+</html>

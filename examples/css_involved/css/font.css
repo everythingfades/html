@@ -1,0 +1,23 @@
+#example1 {color:red;}
+#example2 {color:#00ff00;}
+#example3 {color:rgb(0,0,255)}
+#example4 {color:rgba(255.0,255,.5)}
+            
+#example5 {font-weight:normal}
+#example6 {font-weight:bold}
+#example7 {font-weight:bolder}
+#example8 {font-weight:lighter}
+#example9 {font-weight:360}
+            
+#example10{font-style:normal}
+#example11{font-style:italic}
+            
+#example12{font-family:"SimHei"}
+#example13{font-family:"SimSun"}
+#example14{font-family:"Microdoft YaHei"}
+#example15{font-family:"Times New Roman"}
+#example16{font-family:"Arial"}
+#example17{font-family:"Helvetica"}
+#example18{font-family:"Courier New"}
+#example19{font-family:"monspace"}
+#example20{font-family:"Times"}

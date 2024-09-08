@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+        }
+
+        .content caption{
+            font-size: 2em;
+            font-weight: bold;
+            margin: 1em 0;
+        }
+
+        .content th,td{
+            border: 1px solid #999;
+            text-align: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .content thead tr{
+            background-color: #008c8c;
+            color: #fff;
+        }
+
+        .content tbody tr:nth-child(odd){
+            background-color: #eee;
+        }
+
+        .content tbody tr:hover{
+            background-color: #ccc;
+        }
+
+        .content tbody tr td:first-child{
+            color: #f40;
+        }
+
+        .content tfoot tr td{
+            text-align: center;
+            align-items: center;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        名称<input type="text" v-model="name"><br>
+        数量<input type="number" v-model="num"><br>
+        暂时修改<input type="number" id="temp"><br>
+        <button @click="update">上传</button>
+        <button @click="empty">清空</button>
+        <button @click="alter">暂时修改</button>
+        <p>数量:{{totalCount}}</p>
+        <br><br>
+        <div>
+            <h3>购物车({{totalCount}})</h3>
+            <table class="content">
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>名称</td>
+                        <td>数量</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in arr" :key="item.id"><td v-for="(v,k) in item"><p>{{v}}</p></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                name:"",
+                num:0,
+                arr:[],
+                id:0,
+            },
+            methods:{
+                update(){
+                    this.arr.push({"id":++this.id,"name":this.name,"num":parseInt(this.num)})
+                },
+                empty(){
+                    this.arr = []
+                },
+                alter(){
+                    temp = document.querySelector('#temp').value
+                    this.totalCount = temp
+                }
+            },
+            computed:{
+                totalCount: {
+                    get(){
+                        console.log("get")
+                        let total = this.arr.reduce((sum, item) => sum + item.num,0)
+                        return total
+                    },
+                    set(value){
+                        const originalName = app.name
+                        const originalNum = app.num
+                        app.name = "temp"
+                        app.num = value - this.arr.reduce((sum, item) => sum + item.num,0)
+                        console.log("set")
+                        app.update()
+                        app.name = originalName
+                        app.num = originalNum
+                    },
+                },
+            },
+        })
+    </script>
+</body>
+</html>

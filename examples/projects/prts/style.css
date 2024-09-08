@@ -1,0 +1,16 @@
+.header .navigate {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(170,255,0);
+}
+.header .navigate .nav{
+    position: relative;
+    left: 300px;
+    display: flex;
+    flex-direction: row;
+}
+.header .navigate .nav li{
+    margin-top: 10px;
+    /* float:left;*/
+    padding: 0 20px;
+}

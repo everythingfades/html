@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ad{
+            display: flex;
+        }
+        #close{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 10px;
+            width: 10px;
+            background-color: white;
+            font-size: 12px;
+            border: 1px solid #717171;
+            margin:2px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+        }
+        #img{
+            position: absolute;
+            top: 0px;
+            left: 15px;
+            border: 1px solid #717171;
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            margin:2px;
+            line-height: 12px;
+            overflow: hidden;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+        #reset{
+            position:absolute;
+            top:225px;
+            border: 1px solid #717171;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="father">
+        <div class="son"></div>
+    </div> -->
+    <div id="ad">
+        <div id="close"><span>X</span></div>
+        <div id="img"><img src="https://prts.wiki/images/a/ad/%E5%A4%B4%E5%83%8F_%E8%83%BD%E5%A4%A9%E4%BD%BF.png"></div>
+    </div> 
+    <div id="reset">点我重置</div>
+    <script>
+        // const son = document.querySelector(".son")
+        // son.parentNode.innerText = "找到父节点了"
+        const close = document.querySelector("#close")
+        close.addEventListener("click",function(e){
+            console.log(e.target.parentNode.parentNode)
+            e.target.parentNode.parentNode.style.display = "none"
+        })
+        const reset = document.querySelector("#reset")
+        reset.addEventListener("click",function(e){
+            close.parentNode.style.display = "flex"
+        })
+    </script>
+</body>
+</html>

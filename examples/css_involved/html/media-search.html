@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>网页</title>
+        <style>
+            #box{
+                width:200px;
+                height:200px;
+                background-color:aquamarine;
+            }
+            @media screen and (max-width:768px){
+                #box{
+                    background-color:aqua;
+                }
+                #p{
+                    display:none;
+                }
+            }
+            @media screen and (min-width:768px) and (max-width:996px){
+                #box{
+                    background-color:chartreuse;
+                }
+                #p{
+                    display:none;
+                }
+            }
+            @media screen and (min-width:996px){
+                #box{
+                    background-color:yellowgreen;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <p>涉及更改视图,建议f12进开发者试图改屏幕大小,或者干脆把浏览器拖拽乘不同大小也可以</p>
+        <div id="box"></div>
+        <p id="p">大于996px我会出现,否则消失</p>
+    </body>
+</html>

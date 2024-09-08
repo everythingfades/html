@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search-box{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            position: relative;
+            height:20%;
+            align-items: center;
+            text-align: center;
+        }
+        .search{
+            position: relative;
+            display: block;
+            flex-direction: column;
+            width: 40%;
+            height: 100%;
+            margin: 5%;
+        }
+        .header{
+            position: fixed;
+            height: 30%;
+            width: 100%;
+            display: block;
+            flex-direction: column;
+        }
+        .button{
+            display: block;
+            position: relative;
+            margin:5px;
+            height: fit-content;
+            width: 100%;
+            top: 20px;
+        }
+        .content{
+            display: block;
+            position: absolute;
+            top: 20%;
+            border: 1px solid black;
+            height:auto;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"> 
+        <div class="search-box">
+            <div class="search">
+                <p>省份名</p>
+                <input type="text" id="province">
+            </div>
+            <div class="search">
+                <p>城市名</p>
+                <input type="text" id="city">
+            </div>
+        </div>
+        <div class="button">
+            <button>查询</button>
+        </div>
+    </div>
+    <div class="content">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        div = document.querySelector(".content")
+        btn = document.querySelector(".button button")
+        btn.addEventListener("click",function(){
+            pname = document.querySelector("#province").value
+            cname = document.querySelector("#city").value
+            get(pname, cname)
+        })
+        function get(p,c){
+            axios({
+                url:"http://hmajax.itheima.net/api/city",
+                params:{
+                    pname: p,
+                    cname: c
+                }
+            }).then(result => {
+                div.innerHTML += "<ul>"
+                for (i of result.data.list){
+                    div.innerHTML += `<li>${i}</li>`
+                }
+                div.innerHTML += "</ul>"
+            }).catch(error => {
+                div.innerHTML = error
+            })
+        }
+    </script>
+</body>
+</html>

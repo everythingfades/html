@@ -1,0 +1,34 @@
+#example1 {
+    text-align:right
+}
+#example2 {
+    text-align:center
+}
+#example3 {
+    text-align:left
+}
+            
+            
+#example4 {
+    text-decoration:underline;
+}
+#example5 {
+    text-decoration:overline;
+}
+#example6 {
+    text-decoration:line-through;
+}
+            
+#example7 {
+    text-transform:capitalize;
+}
+#example8 {
+    text-transform:uppercase;
+}
+#example9 {
+    text-transform:lowercase;
+}
+            
+#example10{
+    text-indent:30px;
+}

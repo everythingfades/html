@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            color: red;
+        }
+        .hint{
+            /* display: none; */
+            position: relative;
+        }
+        .valid{
+            color: green;
+        }
+        img{
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>设置密码:</p>
+    <input type="password" class="password">
+    <div class="hint" style="display: none;">
+        <span id="check">密码不符合要求</span>
+        <p class="hint1">密码需要以下格式</p>
+        <ul class="hint1">
+            <li><img><span>至少一个大写字母和一个小写字符</span></li>
+            <li><img><span>至少一个数字</span></li>
+            <li><img><span>至少一个特殊字符(~!@#$%^&*()_+-=`\,./?'";:[]{})</span></li>
+            <li><img><span>长度至少为6位</span></li>
+        </ul>
+    </div>
+    <script>
+        const checkurl = "https://th.bing.com/th/id/OIP.XBSl7ON-jXngzo84o-7k9QHaHa?rs=1&pid=ImgDetMain"
+        const falseurl = "https://bpic.588ku.com/element_origin_min_pic/19/10/09/fbd591ef56dace3b2daffa9fc42cfe43.jpg"
+        const span = document.querySelector("span")
+        const password = document.querySelector(".password")
+        const hint = document.querySelector(".hint")
+        const hint1 = document.querySelectorAll(".hint1")
+        password.addEventListener("input", function(){
+            const text = password.value
+            flag = 1
+            if (/[A-Z]/.test(text) && /[a-z]/.test(text)){
+                flag = flag && 1
+                document.querySelector("ul :nth-child(1) span").className = "valid"
+                document.querySelector("ul :nth-child(1) img").src = checkurl
+            } else {
+                flag = 0
+                document.querySelector("ul :nth-child(1) span").className = ""
+                document.querySelector("ul :nth-child(1) img").src = falseurl
+            }
+            if (/[0-9]/.test(text)){
+                flag = flag && 1
+                document.querySelector("ul :nth-child(2) span").className = "valid"
+                document.querySelector("ul :nth-child(2) img").src = checkurl
+            } else {
+                flag = 0
+                document.querySelector("ul :nth-child(2) span").className = ""
+                document.querySelector("ul :nth-child(2) img").src = falseurl
+            }
+            if (/[!@#$%&()_+-=~]/.test(text) && /[a-z]/.test(text)){
+                flag = flag && 1
+                document.querySelector("ul :nth-child(3) span").className = "valid"
+                document.querySelector("ul :nth-child(3) img").src = checkurl
+            } else {
+                flag = 0
+                document.querySelector("ul :nth-child(3) span").className = ""
+                document.querySelector("ul :nth-child(3) img").src = falseurl
+            }
+            if (text.length >= 6){
+                flag = flag && 1
+                document.querySelector("ul :nth-child(4) span").className = "valid"
+                document.querySelector("ul :nth-child(4) img").src = checkurl
+            } else {
+                flag = 0
+                document.querySelector("ul :nth-child(4) span").className = ""
+                document.querySelector("ul :nth-child(4) img").src = falseurl
+            }
+            console.log("112")
+            if (flag){
+                console.log("111")
+                for (i of hint1){
+                    i.style.display = "none"
+                }
+                document.querySelector("#check").innerText = "密码符合要求"
+                document.querySelector("#check").className = "valid"
+            } else{
+                for (i of hint1){
+                    i.style.display = "block"
+                }
+                hint.style.display = "block"
+                document.querySelector("#check").innerText = "密码不符合要求"
+                document.querySelector("#check").className = ""
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "git.ignoreLimitWarning": true,
+  "java.configuration.maven.globalSettings": "D:\\maven\\conf\\setting.xml",
+  "java.configuration.updateBuildConfiguration": "interactive"
+}

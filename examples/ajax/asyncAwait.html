@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function get(){
+            const pname = (await axios({url:"http://hmajax.itheima.net/api/province"})).data.list[0]
+            const cname = (await axios({url:"http://hmajax.itheima.net/api/city", params:{pname}})).data.list[0]
+            const aname = (await axios({url:"http://hmajax.itheima.net/api/city", params:{pname, cname}})).data.list[0]
+            console.log(pname, cname, aname)
+        }
+        get()
+    </script>
+</body>
+</html>

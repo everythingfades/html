@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>注册</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        div = document.querySelector("div")
+        document.querySelector("button").addEventListener("click", function(){
+            axios({
+                url:"http://hmajax.itheima.net/api/register",
+                method: "POST",
+                data: {
+                    username: "123567890",
+                    password: "124567890"
+                }
+            }).then((result) => {
+                console.log(result)
+            }).catch(error =>
+                console.log(error.response.data.message)
+            )
+        })
+    </script>
+</body>
+</html>

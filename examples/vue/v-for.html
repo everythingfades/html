@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app p [key]{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>有key</p>
+        <ul>
+            <li v-for="(item, index) in arr" :key="item.id"> <input type="checkbox">{{item.name}}</li>
+        </ul>
+        <p>没key</p>
+        <ul>
+            <li v-for="(item, index) in arr"> <input type="checkbox">{{item.name}}</li>
+        </ul>
+        <input type="text" v-model="name">
+        <br>
+        <button>remove</button>
+        <button @click='add(name)'>add</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                name:"",
+                arr:[
+                    {id:1,name:"苹果"},
+                    {id:2,name:"香蕉"},
+                    {id:3,name:"西瓜"},
+                    {id:4,name:"梨"}
+                ]
+            },
+            methods: {
+                add(name){
+                    app.arr.unshift({id:app.arr.length+1,name:name})
+                    console.log(app.arr)
+                }
+            }
+        })
+        document.querySelector("button").addEventListener("click",()=>{
+            document.querySelectorAll("#app ul").forEach(it=>it.removeChild(it.children[0]))
+        })
+    </script>
+</body>
+</html>

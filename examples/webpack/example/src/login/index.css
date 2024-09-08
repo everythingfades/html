@@ -1,0 +1,53 @@
+.login-box {
+    position: absolute;  
+    top: calc(50% - 135px);   
+    left: calc(50% - 180px);
+    height: 270px;
+    width: 360px;
+    border: 1px solid #53c484;
+    border-radius: 5px;
+    background-color: black;
+    opacity: 0.5;
+    color: white;
+    text-align: justify;
+    vertical-align: middle;
+    backdrop-filter:blur(100px);
+    z-index: 100;
+}
+#video-item{
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    width: auto;
+    z-index: -99;
+}
+#title{
+    font-weight: 600;
+    color: rgb(170, 255, 0);
+    font-size: 30px;
+}
+.wrapper{
+    width: 90%;
+    height: 95%;
+    position: relative;
+    left: calc(50%-135px);
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+}
+div input{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
+    height: 25px;
+    margin: 5px;
+}
+.login-box button{
+    height: 30px;
+    width: 60px;
+    border: 1px solid yellowgreen;
+    background-color: rgb(170, 255, 0);
+    border-radius: 4px;
+    margin-left: 10px;
+    opacity: 0.75;
+}

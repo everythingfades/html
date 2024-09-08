@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const codes = ["110100", "310100", "440100", "440300"]
+        const p = Promise.all(codes.map(it => axios({
+            url : "http://hmajax.itheima.net/api/weather",
+            params : {
+                city: it
+            }
+        })))
+        p.then(result =>
+            console.log(result.map(it => it.data.data.todayWeather))
+        )
+    </script>
+</body>
+</html>

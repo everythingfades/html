@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    </div>
+    <script>
+        function myAxios(config){
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest()
+                if (config.params){
+                    const paramsObj = new URLSearchParams(config.params)
+                    const string = paramsObj.toString()
+                    config.url += `?${string}`
+                }
+                xhr.open(config.method || "GET",config.url)
+                xhr.addEventListener("loadend", ()=>{
+                    if (xhr.status >= 200 && xhr.status < 300){
+                        resolve(xhr.response)
+                    } else {
+                        reject(new Error(xhr.response))
+                    }
+                })
+                if (config.data){
+                    xhr.setRequestHeader('content-type', 'application/json; charset=UTF-8')
+                    xhr.send(JSON.stringify(config.data))
+                } else {
+                    xhr.send()
+                }
+            })
+        }
+        myAxios({
+            url:"http://ajax-api.itheima.net/api/books",
+            method: "delete",
+            params:{
+                id:1
+            }
+            // data:{
+            //     id: "1",
+            //     bookname: "aaa",
+            //     author: "aaa",
+            //     publisher: "aaa",
+            // }
+        }).then(result => {
+            document.querySelector("div").innerText = result
+            console.log(result)
+        }).catch(error => {
+            document.querySelector("div").innerText = error
+            console.log(error.message)
+        })
+    </script>
+</body>
+</html>

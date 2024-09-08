@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        .header{
+            display: flex;
+            flex-direction: column;
+            height: 5%;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            margin: 5px;
+            justify-content: space-around;
+        }
+        .search{
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width:100%;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px;
+        }
+        .search-box{
+            position: relative;
+            margin: auto;
+        }
+        .content{
+            width: 100%;
+            border-collapse: collapse;
+            position: absolute;
+            top: 10%;
+        }
+
+        .content caption{
+            font-size: 2em;
+            font-weight: bold;
+            margin: 1em 0;
+        }
+
+        .content th,td{
+            border: 1px solid #999;
+            text-align: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .content thead tr{
+            background-color: #008c8c;
+            color: #fff;
+        }
+
+        .content tbody tr:nth-child(odd){
+            background-color: #eee;
+        }
+
+        .content tbody tr:hover{
+            background-color: #ccc;
+        }
+
+        .content tbody tr td:first-child{
+            color: #f40;
+        }
+
+        .content tfoot tr td{
+            text-align: center;
+            align-items: center;
+            padding-right: 20px;
+        }
+
+        #upload{
+            height: 20px;
+            width: 40px;
+            font-size: 12px;
+            position: absolute;
+            right: 10%;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+        }
+        .modal-body table tr td{
+            border: none;
+        }
+        a.edit{
+            color: #0342ff;
+        }
+        a.delete{
+            color: rgb(255, 72, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="modal name-box edit" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">修改图书</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <table>
+                            <tr>
+                                <td><span>书籍名称</span></td>
+                                <td><input type="text" class="bookname" placeholder="默认姓名"></td>
+                            </tr>
+                            <tr>
+                                <td><span>作者</span></td>
+                                <td><input type="text" class="author" placeholder="默认姓名"></td>
+                            </tr>
+                            <tr>
+                                <td><span>出版社</span></td>
+                                <td><input type="text" class="publisher" placeholder="默认姓名"></td>
+                            <tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary save-btn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal name-box upload" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">上传图书</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <table>
+                            <tr>
+                                <td><span>书籍名称</span></td>
+                                <td><input type="text" class="bookname" placeholder="默认姓名"></td>
+                            </tr>
+                            <tr>
+                                <td><span>作者</span></td>
+                                <td><input type="text" class="author" placeholder="默认姓名"></td>
+                            </tr>
+                            <tr>
+                                <td><span>出版社</span></td>
+                                <td><input type="text" class="publisher" placeholder="默认姓名"></td>
+                            <tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary save-btn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <span>图书管理</span>
+        <button id="upload">上传</button>
+    </div>
+    <table class="content">
+        <thead>
+            <tr>
+                <th>书籍编号</th>
+                <th>书籍名称</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>创建日期</th>
+                <th>更新日期</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const uploadModelDom = document.querySelector(".upload")
+        const uploadModal = new bootstrap.Modal(uploadModelDom)
+        const editModelDom = document.querySelector(".edit")
+        const editModel = new bootstrap.Modal(editModelDom)
+        var editItem
+        // // document.querySelector(".create").addEventListener("click", ()=>{
+        //     modal.show()
+        // })
+        // document.querySelector(".save-btn").addEventListener("click",()=>{
+        //     modal.hide()
+        // })
+        function Book(bookname, author, publisher, createdAt, updatedAt, id){
+            this.bookname = bookname
+            this.author = author
+            this.publisher = publisher
+            this.createdAt = createdAt
+            this.updatedAt = updatedAt
+        }
+        const default_books = [
+            new Book("水许传","施耐龟","大民文学出版社","2022-02-31", "2022-02-31"),
+            new Book("绿楼梦","艹雪琴","大民文学出版社","2025-01-01", "2025-01-01")
+        ]
+        var books = []
+        const content = document.querySelector(".content tbody")
+        function upload(book){
+            axios({
+                url:"http://ajax-api.itheima.net/api/books",
+                method:"post",
+                data:{
+                    bookname:book.bookname,
+                    author:book.author,
+                    publisher:book.publisher,
+                }
+            }).then(result => {
+                console.log("post")
+                console.log(result.data.data.id)
+                const id = result.data.data.id
+                book.id = id
+                addin(book)
+            })
+        }
+        function refresh(){
+            content.innerHTML = ""
+            axios({
+                url:"http://ajax-api.itheima.net/api/books",
+                method:"get",
+            }).then(result => {
+                console.log(result)
+                for (i of result.data.data){
+                    addin(i)
+                }
+            })
+        }
+        function addin(book){
+            newElement = document.createElement("tr")
+            newElement.className = "books"
+            // newElement.id = id
+            newElement.innerHTML += `
+                <td>${book.id}</td>
+                <td>${book.bookname}</td>
+                <td>${book.author}</td>
+                <td>${book.publisher}</td>
+                <td>${book.createdAt}</td>
+                <td>${book.updatedAt}</td>
+                <td style="display:flex; flex-direction:row; justify-content:space-around;">
+                    <a class="edit">修改</a>
+                    <a class="delete">删除</a>
+                </td>
+            `
+            content.appendChild(newElement)
+        }
+        function timestampToTime(timestamp) {
+            var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1):date.getMonth()+1) + '-';
+            var D = (date.getDate()< 10 ? '0'+date.getDate():date.getDate())+ ' ';
+            var h = (date.getHours() < 10 ? '0'+date.getHours():date.getHours())+ ':';
+            var m = (date.getMinutes() < 10 ? '0'+date.getMinutes():date.getMinutes()) + ':';
+            var s = date.getSeconds() < 10 ? '0'+date.getSeconds():date.getSeconds();
+            return Y+M+D+h+m+s;
+        }
+        refresh()
+        document.querySelector("#upload").addEventListener("click",()=>{
+            uploadModal.show()
+            // console.log("111111")
+            // const bookname = document.querySelector("#bookname").value
+            // const author = document.querySelector("#author").value
+            // const publisher = document.querySelector("#publisher").value
+            // const book = new Book(bookname,author,publisher,timestampToTime(Date.now()),timestampToTime(Date.now()))
+            // if (bookname.length == 0 || author.length == 0 || publisher.length == 0){
+            //     alert("不能为空")
+            //     return
+            // }
+            // upload(book)
+        })
+        document.querySelector(".content").addEventListener("click", e =>{
+            if (e.target.classList.contains("delete")){
+                content.removeChild(e.target.parentElement.parentElement)
+                console.log(e.target.parentElement.parentElement.children[0].innerText)
+                const url = `http://ajax-api.itheima.net/api/books/${e.target.parentElement.parentElement.children[0].innerText}`
+                console.log(url)
+                axios({
+                    url: url,
+                    method: "delete"
+                }).then(()=>{
+                    return
+                })
+            } else if (e.target.classList.contains("edit")){
+                console.log(e.target.parentElement.parentElement.children[0].innerText)
+                editModel.show()
+                editItem = e.target.parentElement.parentElement
+            }
+        })
+        document.querySelector(".upload .modal-footer .save-btn").addEventListener("click", function(){
+            const bookname = document.querySelector(".upload .modal-body form .bookname").value
+            const author = document.querySelector(".upload .modal-body form .author").value
+            const publisher = document.querySelector(".upload .modal-body form .publisher").value
+            const book = new Book(bookname,author,publisher,timestampToTime(Date.now()),timestampToTime(Date.now()))
+            if (bookname.length == 0 || author.length == 0 || publisher.length == 0){
+                alert("不能为空")
+                return
+            }
+            upload(book)
+            console.log("111111")
+            console.log(book)
+            uploadModal.hide()
+        })
+        document.querySelector(".edit .modal-footer .save-btn").addEventListener("click", function(){
+            // console.log(e.target.parentElement)
+            const bookname = document.querySelector(".edit .modal-body form .bookname").value || editItem.children[1].innerText
+            const author = document.querySelector(".edit .modal-body form .author").value || editItem.children[2].innerText
+            const publisher = document.querySelector(".edit .modal-body form .publisher").value || editItem.children[3].innerText
+            const book = new Book(bookname,author,publisher,editItem.children[4].innerText,timestampToTime(Date.now()))
+            book.id = editItem.children[0].innerText
+            // if (bookname.length == 0 || author.length == 0 || publisher.length == 0){
+            //     alert("不能为空")
+            //     return
+            // }
+            editItem.innerHTML = `
+                <td>${book.id}</td>
+                <td>${book.bookname}</td>
+                <td>${book.author}</td>
+                <td>${book.publisher}</td>
+                <td>${book.createdAt}</td>
+                <td>${book.updatedAt}</td>
+                <td style="display:flex; flex-direction:row; justify-content:space-around;">
+                    <a class="edit">修改</a>
+                    <a class="delete">删除</a>
+                </td>
+            `
+            editModel.hide()
+            const url = `http://ajax-api.itheima.net/api/books/${book.id}`
+            console.log(url)
+            axios({
+                url: url,
+                method: "put",
+                data:{
+                    id:book.id,
+                    bookname:book.bookname,
+                    author:book.author,
+                    publisher:book.publisher,
+                }
+            }).then(()=>{
+                return
+            })
+        })
+</script>
+</body>
+</html>

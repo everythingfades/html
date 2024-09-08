@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+        div {
+            margin: 100px;
+            height: 200px;
+            width: 200px;
+            overflow: scroll;
+            border: 1px solid black;
+        }
+        hr {
+            height: 30px;
+            margin: 0px;
+        }
+        p {
+            height: 30px;
+            margin: 0px;
+        }
+    </style>
+    <!-- <script>
+        // window.addEventListener("load", function(){
+        //     const btn = document.querySelector("button")
+        //     btn.addEventListener("click", function(){
+        //        alert(11)
+        //     })
+        // })
+        // document.addEventListener("DOMContentLoaded", function(){
+        //     const btn = document.querySelector("button")
+        //     btn.addEventListener("click", function(){
+        //         alert(11)
+        //     })
+        // })
+    </script> -->
+</head>
+<body>
+    <div>
+        <p>很多文字</p>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <p>隐藏的宝藏</p>
+    </div>
+    <script>
+        // window.addEventListener("scroll", function(){
+        //     // console.log("我滚了")
+        // })
+        
+        const div = document.querySelector("div")
+        function alertTreasure(){
+            if (div.scrollTop >= 800){
+                alert("你找到了隐藏的宝藏")
+                div.scrollTop = 0
+                //div.removeEventListener("scroll", alertTreasure)
+            }
+        }
+        div.addEventListener("scroll", alertTreasure)
+        window.addEventListener("scorll", function(){
+            // 页面的滚动像素
+            console.log(document.documentElement.scrollTop)
+        })
+    </script>
+</body>
+</html>

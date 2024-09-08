@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#example{
+    color:red;
+}
+
+.example {
+    color:purple;
+}
+
+p {
+    color: red;
+    font-family: SimHei;
+    background-color: grey;
+}
+
+p,h1{
+    color:green;
+}

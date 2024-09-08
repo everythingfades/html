@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="gender == 1">男</p>
+        <p v-else>女</p>
+        <!-- <button v-on:click="gender = !gender;score = Math.floor(Math.random() * 100)">切换</button> -->
+        <button @click="fn(fullscore)">切换</button>
+        <p v-if="score >= 90">A*</p>
+        <p v-else-if="score >=70">A</p>
+        <p v-else-if="score >= 60">B</p>
+        <p v-else-if="score >=40">C</p>
+        <p v-else>F</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        // const app = new Vue({
+        //     el: "#app",
+        //     data: {
+        //         gender: 1,
+        //         score:80,
+        //     }
+        // })
+        const app = new Vue({
+            el: "#app",
+            data: {
+                gender: 1,
+                score:80,
+                fullscore:100,
+            },
+            methods:{
+                fn(score){
+                    this.gender = !this.gender
+                    this.score = score
+                }
+            }
+        })
+        // document.querySelector("button").addEventListener("click",()=>{
+        //     app.gender = !app.gender
+        //     app.score = Math.floor(Math.random() * 100)
+        //     console.log(app.gender)
+        // })
+    </script>
+</body>
+</html>

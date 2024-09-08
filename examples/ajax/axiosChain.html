@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="province"></div>
+    <div class="city"></div>
+    <div class="area"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let pname = ""
+        axios({
+            url:"https://hmajax.itheima.net/api/province"
+        }).then(result => {
+            console.log(result)
+            pname = result.data.list[0]
+            document.querySelector(".province").innerHTML = pname
+            return axios({
+                // url:"https://hmajax.itheima.net/api/city",
+                url:"https://hmajax.itheima.net/api/cit",
+                params:{
+                    // pname: "djoewjdow"
+                }
+            })
+        }).catch(error => {
+            console.log(error)
+            return axios({
+                // url:"https://hmajax.itheima.net/api/city",
+                url:"https://hmajax.itheima.net/api/cit",
+                params:{
+                    pname: pname,
+                }
+            })
+        }).then(result =>{
+            console.log(result)
+            const cname = result.data.list[0]
+            document.querySelector(".city").innerHTML = cname
+            return axios({
+                // url:"https://hmajax.itheima.net/api/area",
+                url:"https://hmajax.itheima.net/api/are",
+                params:{
+                    pname: pname,
+                    cname: cname
+                }
+            })
+        }).catch(error => {
+            console.log(error)
+            return axios({
+                // url:"https://hmajax.itheima.net/api/are",
+                url:"https://hmajax.itheima.net/api/are",
+                params:{
+                    pname: pname,
+                    cname: cname
+                }
+            })
+        }).then(result => {
+            document.querySelector(".area").innerHTML = result.data.list[0]
+        }).catch(error => {
+            console.log(error)
+        })
+    </script>
+</body>
+</html>

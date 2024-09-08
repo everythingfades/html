@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>网页</title>
+        <meta charset = "UTF-8">
+        <style>
+            *{
+                font-family: SimSun;
+            }
+            p {
+                color: red;
+                font-size: 30px;
+            }
+            .example2{
+                color: orange;
+                font-size: 20px;
+            }
+            #example3{
+                color: blue;
+                font-size: 20px;
+                font-family: SimSun;
+            }
+            #example4,#example41111{
+                color:green;
+                font-family:SimHei;
+                font-size:30px;
+            }
+            #exampleul li{
+                color:lime;
+                font-family:"Microsoft YaHei";
+                font-size:25px;
+            }
+            #examplediv>a{
+                color:gold;
+                font-family:"Microsoft YaHei";
+                font-size:10px;
+            }
+            #examplep+h2{
+                color:purple;
+                font-family:"Times New Roman";
+                font-size:20px;
+            }
+            #examplep~h2{
+                font-family:"SimSun"
+            }
+            .box{width:500px;background:#f00;height:300px;}
+            .box::before{
+                content:'开头的内容';height:100px;
+                line-height:100px;color:#fff;background:#00f;
+            }
+            .box::after{
+                content:'这是一个段落';
+                background-color:green;
+                display:block;height:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>某个</p>
+        <h1>标题1</h1>
+        <h2 class="example2">标题2</h2>
+        <h3 id="example3">标题3</h3>
+        <h4 id="example4">标题4</h4>
+        <h4 id="example41111">标题4</h4>
+        <ul type="disc" id="exampleul">
+            <li>列表1</li>
+            <li>列表2</li>
+            <li>列表3</li>
+            <li>列表4</li>
+            <li>列表5</li>
+            <li>
+                <ul type="circle">
+                    <li>popcat</li>
+                    <li>happycat</li>
+                </ul>
+            </li>
+        </ul>
+        <div id="examplediv">
+            <a href="https://www.baidu.com">我不被任何标签嵌套,只是一个a标签</a>
+            <p><a href="https://www.bing.com">我被额外的一层p标签嵌套</a></p>
+            <a href="www.google.com">我啥也不是</a>
+        </div>
+        <p id="examplep">我是p标签</p>
+        <h2>我是紧跟在p标签后面的h2标签</h2>
+        <h2>我是隔了一个标签但在p标签后面的h2标签</h2>
+        <div class="box">我是设置了::after和::before的div</div>
+        <hr>
+    </body>
+</html>

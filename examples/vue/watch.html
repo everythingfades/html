@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 500px;
+            width: 800px;
+            position: relative;
+            text-align: start;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid black;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        textarea{
+            width: 350px;
+            height: 250px;
+            font-size: 18px;
+            border: 1px solid #dedede;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            margin: 10px;
+        }
+        .box .output .trans{
+            margin: 10px;
+            width: 350px;
+            height: 250px;
+            font-size: 18px;
+            border: 1px solid #dedede;
+            outline: none;
+            resize: none;
+            padding: 10px;
+        }
+        .output{
+            text-align: center;
+            align-content: center;
+            vertical-align: middle;
+        }
+        .input{
+            text-align: center;
+            align-content: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="box">
+            <div class="input">
+                <span>输入翻译文本</span>
+                <textarea v-model="obj.input">
+                </textarea>
+            </div>
+            <div class="output">
+                <span>翻译结果</span>
+                <div class="trans"></div>
+            </div><br>
+        </div>
+        <div>
+            <select name="lang" class="lang" v-model="obj.lang">
+               <option value="italy">意大利</option>
+                <option value="english">英语</option>
+                <option value="german">德语</option>
+            </select>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                obj:{
+                    input:"",
+                    output:"",
+                    lang:"italy",
+                },
+                wordcount:0,
+            },
+            watch:{
+                'obj.input' (newValue){
+                    clearTimeout(this.timer)
+                    this.timer = setTimeout(async()=>{
+                        const res = await axios({
+                            url: "https://applet-base-api-t.itheima.net/api/translate",
+                            params:{
+                                words: newValue,
+                                lang: app.lang
+                            }
+                        })
+                        this.obj.output = res.data.data
+                        document.querySelector(".trans").innerText = this.obj.output
+                        console.log(res.data.data)
+                    }, 1000)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

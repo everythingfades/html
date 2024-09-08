@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 3px solid violet;
+        }
+        .nav{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            border: 3px solid blue;
+            padding: 15px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector(".box")
+        box.classList.add("nav")
+    </script>
+</body>
+</html>

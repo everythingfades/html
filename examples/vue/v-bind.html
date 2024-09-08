@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            background-color: red;
+        }
+        .b{
+            border: 1px solid black;
+        }
+        .c{
+            border-radius: 10px;
+        }
+        .d{
+            height: 200px;
+            width: 200px;
+        } 
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="{a:true,b:true,c:true,d:true}" v-html="msg"></div>
+        <div v-bind:class="['a','b','c','d']" v-html="msg"></div>
+        <div v-bind:class="{a:active[0],b:active[1],c:active[2],d:active[3]}" v-html="msg"></div>
+        <div v-bind:style="{backgroundColor:attr[0],border:attr[1],borderRadius:attr[2],height:attr[3],width:attr[3]}" v-html="msg"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg:"aksasa",
+                active:[1,1,0,1],
+                attr:["red","1px solid black","10px","200px"]
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            age: 18
+        }
+        function fn(x,y){
+            console.log(this)
+            console.log(x + y)
+        }
+        fn(1,2)
+        fn.call(document,1,2)
+        fn.apply(obj, [1,2])
+        const fun = fn.bind(obj)
+        console.log(fun)
+        fun(1,2)
+        console.log(Math.max.apply(Math,  [1,2,3,4,5,6]))
+        console.log(Math.max.call(Math,  ...[1,2,3,4,5,6]))
+    </script>
+</body>
+</html>

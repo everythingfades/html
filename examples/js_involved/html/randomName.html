@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 3px solid violet;
+        }
+        .nav{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            border: 3px solid blue;
+            padding: 15px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id = "bigbox">
+        <div id = "title">随机抽取一个游戏启动</div>
+        <div id = "selected">你还没抽取</div>
+        <div id = "buttons">
+            <button id = "start">start</button>
+            <button id = "end">end</button>
+            <button id = "reset">reset</button>
+        </div>
+    </div>
+    <script>
+        const start = document.querySelector("#start")
+        const end = document.querySelector("#end")
+        const reset = document.querySelector("#reset")
+        const selected = document.querySelector("#selected")
+        var data = ["原神","崩铁","明日方舟","1999","玩个锤子"]
+        let timerId = 0
+        var num = 0
+        start.addEventListener('click',function(){
+            if (data.length === 1){
+                selected.innerText = "你已经把所有游戏玩完一遍了"
+                start.setAttribute("disabled",true)
+                end.setAttribute("disabled",true)
+            }
+            else{
+                timerId = setInterval(function(){
+                    num = parseInt(Math.random() * data.length)
+                    selected.innerText = data[num] + ", 启动!"
+                })
+            }
+        })
+        end.addEventListener('click',function(){
+            clearInterval(timerId)
+            data.splice(num,1)
+        })
+        reset.addEventListener('click',function(){
+            timerId = 0
+            data = ["原神","崩铁","明日方舟","1999","玩个锤子"]
+            start.removeAttribute("disabled")
+            end.removeAttribute("disabled")
+        })
+    </script>
+</body>
+</html>

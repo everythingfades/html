@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p id="currentTime">当前时间</p>
+        <p id="eight">距离明天早八还有秒<p>
+    </div>
+    <script>
+        const currentTime = document.querySelector("#currentTime")
+        const eight = document.querySelector("#eight")
+        setInterval(function(){
+            const date = new Date()
+            currentTime.innerText = "当前时间" + date.toLocaleString()
+            var newDate = new Date(date.getTime())
+            newDate.setHours(8,0,0)
+            if (date.getHours() >= 8){
+                newDate = new Date(newDate.getTime() + 86400000)
+            }
+            const cnt = newDate.getTime() - date.getTime()
+            eight.innerText = `距离明天早八还有${cnt}毫秒,或者${parseInt(cnt%86400000/3600000)}小时,${parseInt(cnt%3600000/60000)}分钟,${parseInt(cnt%60000/1000)}秒,${cnt%1000}毫秒`
+        },1000)
+    </script>
+</body>
+</html>

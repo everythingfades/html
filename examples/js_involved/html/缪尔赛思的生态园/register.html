@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .login-box {
+            position: absolute;  
+            top: calc(50% - 180px);   
+            left: calc(50% - 180px);
+            height: 360px;
+            width: 360px;
+            border: 1px solid #53c484;
+            border-radius: 5px;
+            background-color: black;
+            opacity: 0.5;
+            color: white;
+            text-align: justify;
+            vertical-align: middle;
+            backdrop-filter:blur(100px);
+            z-index: 100;
+        }
+        #video-item{
+            position: absolute;
+            height: 100%;
+            overflow: hidden;
+            width: auto;
+            z-index: -99;
+        }
+        #title{
+            font-weight: 600;
+            color: rgb(170, 255, 0);
+            font-size: 30px;
+        }
+        .wrapper{
+            width: 90%;
+            height: 95%;
+            position: relative;
+            left: calc(50%-135px);
+            align-items: center;
+            text-align: center;
+            vertical-align: middle;
+        }
+        div input{
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 80%;
+            height: 25px;
+            margin: 5px;
+        }
+        .login-box button{
+            height: 30px;
+            width: 60px;
+            border: 1px solid yellowgreen;
+            background-color: rgb(170, 255, 0);
+            border-radius: 4px;
+            margin-left: 10px;
+            opacity: 0.75;
+        }
+    </style>
+</head>
+<body>
+    <!-- <img src="https://bkimg.cdn.bcebos.com/pic/f31fbe096b63f624df8f89e98944ebf81b4ca30e?x-bce-process=image/resize,m_lfit,w_536,limit_1/quality,Q_70"> -->
+
+    <video id="video-item" src="../../../other/【中】《明日方舟》限定干员「缪尔赛思」前瞻PV.mp4" autoplay="autoplay" loop="loop" muted = "muted">
+    </video>
+    <!-- <audio style="display: none;position: fixed" src="../../other/《明日方舟》EP -Morning Dew.wav",autoplay="autoplay",loop="loop"></audio> -->
+    <div class="login-box">
+        <div class="wrapper">
+            <p id="title">Register</p>
+            <div class="username">
+                <input type="text" placeholder="请输入用户名">
+            </div>
+            <div class="password" style="margin-top: 5px;">
+                <input type="text" placeholder="请输入密码">
+            </div>
+            <div class="name" style="margin-top: 5px;">
+                <input type="text" placeholder="请输入昵称">
+            </div>
+            <div class="img" style="margin-top: 5px;">
+                <input type="text" placeholder="请输入头像url">
+            </div>
+            <span id="error" style="color: red;"></span>
+            <div class="buttons" style="margin-top: 10px;">
+                <button>注册</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var accounts = []
+        if (localStorage.getItem("accounts") == null){
+            accounts = [
+                {"username": "doctor", "password": "doctor", "name":"博士","avatar":"https://prts.wiki/images/4/43/%E6%80%AA%E7%9B%97%E7%9A%84%E5%AF%86%E5%AE%A4%E6%8C%91%E6%88%98_%E5%A4%B4%E5%83%8F_%E5%8D%9A%E5%A3%AB.png?20230327124224"},
+                {"username": "amiya", "password": "amiya","name":"阿米娅","avatar":"https://prts.wiki/images/c/c6/%E5%A4%B4%E5%83%8F_%E9%98%BF%E7%B1%B3%E5%A8%85%28%E8%BF%91%E5%8D%AB%29_skin1.png"},
+                {"username": "muelsyse","password": "muelsyse","name":"缪尔赛思","avatar":"https://album.biliimg.com/bfs/new_dyn/8a317173abe26488fd0065a5999e11af13167438.jpg@264w_264h_1e_1c.avif"}
+        ]
+            localStorage.setItem("accounts",JSON.stringify(accounts))
+        } else {
+            accounts = JSON.parse(localStorage.getItem("accounts"))
+        }
+        const username = document.querySelector(".username input")
+        const password = document.querySelector(".password input")
+        const name = document.querySelector(".name input")
+        const avatar = document.querySelector(".img input")
+        const button = document.querySelector(".buttons button")
+        button.addEventListener("click", function(){
+            if (username.value == null || password.value == null || name.value == null || avatar.value == null){
+                console.log(username.value, password.value, name.value, avatar.value)
+                document.querySelector("#error").style.color = "red"
+                document.querySelector("#error").innerText = "请填写完所有信息"
+            }
+            else if (/[A-Za-z0-9]+/.test(username.value) == false || /[A-Za-z0-9]+/.test(password.value) == false || /[A-Za-z0-9]+/.test(name.value) == false){
+                console.log(username.value)
+                console.log(/[^A-Za-z0-9]+/.test(username.value))
+                document.querySelector("#error").style.color = "red"
+                document.querySelector("#error").innerText = "用户名或密码或昵称无效"
+            } else {
+                console.log(112)
+                accounts.push({"username":username.value, "password":password.value, "name":name.value, "avatar":avatar.value})
+                localStorage.setItem("accounts",JSON.stringify(accounts))
+                document.querySelector("#error").style.color = "rgb(170,255,0)"
+                document.querySelector("#error").innerText = "注册成功"
+                location.href = "loginPage.html"
+            }
+        })
+    </script>
+</body>
+</html>

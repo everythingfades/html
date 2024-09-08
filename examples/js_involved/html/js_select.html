@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>网页</title>
+</head>
+<body>
+    <p>打开控制台</p>
+    <div class="box">box</div>
+    <div class="box">box1</div>
+    <div id = "id1">id1</div>
+    <script>
+        const box = document.querySelector("div")
+        const id1 = document.querySelector("#id1")
+        console.log("js里如果出现两个div只会选第一个",box)
+        console.log("querySelector参数和css选择器一样,用引号包裹",id1)
+        prompt("现在我要改动box的颜色,输入任意东西继续")
+        box.style.color = "red"
+    </script>
+</body>
+</html>
